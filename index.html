@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mestre da Serralheria — Área de Membros</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--bg2:#141414;--bg3:#1c1c1c;
+  --border:#242424;--border2:#333;
+  --gold:#c8830a;--gold2:#f0a020;--gold-dim:rgba(200,131,10,.15);
+  --white:#fff;--gray:#999;--gray2:#666;
+}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(10,10,10,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  height:60px;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{height:40px;width:auto;object-fit:contain}
+.logo-text{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:2px;color:var(--gold2)}
+
+.lang-bar{display:flex;gap:4px;background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:3px}
+.lang-btn{
+  background:transparent;border:none;color:var(--gray);
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  padding:4px 10px;border-radius:5px;cursor:pointer;transition:.2s;
+}
+.lang-btn.active{background:var(--gold);color:#000}
+.lang-btn:hover:not(.active){color:var(--white)}
+
+/* HERO */
+.hero{width:100%;overflow:hidden;position:relative}
+.hero img{width:100%;display:block;object-fit:cover;object-position:center center;max-height:420px}
+.hero-fade{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,var(--bg))}
+
+/* MAIN */
+main{max-width:1200px;margin:0 auto;padding:40px 20px 80px}
+
+/* SECTION LABEL */
+.sec-label{
+  display:flex;align-items:center;gap:16px;
+  margin:52px 0 24px;
+}
+.sec-label h2{
+  font-family:'Bebas Neue',cursive;font-size:22px;
+  letter-spacing:2px;color:var(--gold2);white-space:nowrap;
+}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--border2)}
+
+/* HERO CARD */
+.hero-card{
+  display:grid;grid-template-columns:260px 1fr;
+  border:1px solid var(--border2);border-radius:14px;overflow:hidden;
+  background:var(--bg2);transition:border-color .3s;cursor:pointer;
+}
+.hero-card:hover{border-color:var(--gold)}
+.hero-card .ci{overflow:hidden}
+.hero-card .ci img{width:100%;height:100%;object-fit:contain;background:var(--bg3);transition:transform .4s}
+.hero-card:hover .ci img{transform:scale(1.03)}
+.hero-card .cb{padding:32px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+/* PRODUCT CARD */
+.pcard{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;cursor:pointer;
+  display:flex;flex-direction:column;transition:all .3s;
+}
+.pcard:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 28px rgba(200,131,10,.12)}
+.pcard .ci{aspect-ratio:3/4;overflow:hidden;background:var(--bg3);position:relative}
+.pcard .ci img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.pcard:hover .ci img{transform:scale(1.04)}
+.pcard .cb{padding:14px;flex:1;display:flex;flex-direction:column;gap:6px}
+
+/* PLACEHOLDER */
+.ph{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,#141414,#1e1e1e);
+}
+.ph svg{opacity:.15;width:44px;height:44px;color:var(--gray)}
+.ph span{color:#444;font-size:11px;font-style:italic}
+
+/* BADGE */
+.badge{
+  display:inline-block;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 9px;border-radius:20px;width:fit-content;
+}
+.bg-gold{background:var(--gold-dim);color:var(--gold2);border:1px solid rgba(200,131,10,.3)}
+.bg-green{background:rgba(34,197,94,.1);color:#4ade80;border:1px solid rgba(34,197,94,.25)}
+.bg-blue{background:rgba(59,130,246,.1);color:#60a5fa;border:1px solid rgba(59,130,246,.25)}
+.bg-purple{background:rgba(168,85,247,.1);color:#c084fc;border:1px solid rgba(168,85,247,.25)}
+
+.card-title{font-size:14px;font-weight:700;color:var(--white);line-height:1.3;flex:1}
+.card-desc{font-size:12px;color:var(--gray);line-height:1.5}
+.card-title-hero{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;line-height:1.1}
+.card-desc-hero{font-size:14px;color:var(--gray);line-height:1.6}
+
+/* TAG COUNT */
+.tag-count{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;color:var(--gray2);
+  margin-top:auto;
+}
+.tag-count svg{width:12px;height:12px}
+
+/* BTN */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:700;font-size:13px;padding:10px 20px;
+  border-radius:8px;border:none;cursor:pointer;
+  letter-spacing:.5px;transition:all .2s;
+}
+.btn-gold{background:var(--gold);color:#000}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-ghost{background:var(--bg3);color:var(--gold2);border:1px solid rgba(200,131,10,.3)}
+.btn-ghost:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+.btn-sm{font-size:11px;padding:7px 14px;border-radius:6px}
+
+/* OVERLAY */
+.overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.85);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.overlay.open{opacity:1;pointer-events:auto}
+
+/* MODAL */
+.modal{
+  background:var(--bg2);border:1px solid var(--border2);border-radius:16px;
+  max-width:680px;width:100%;max-height:90vh;overflow-y:auto;
+  transform:translateY(16px) scale(.98);transition:transform .25s;
+}
+.overlay.open .modal{transform:none}
+
+.modal-header{
+  position:relative;padding:0;
+  border-radius:16px 16px 0 0;overflow:hidden;
+}
+.modal-header img{width:100%;max-height:200px;object-fit:cover;object-position:center 30%}
+.modal-header .mh-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(20,20,20,1) 0%,rgba(20,20,20,.4) 60%,transparent 100%);
+}
+.modal-header .mh-info{position:absolute;bottom:0;left:0;right:0;padding:20px 24px}
+.modal-close{
+  position:absolute;top:12px;right:12px;z-index:2;
+  background:rgba(0,0,0,.6);border:none;color:var(--white);
+  width:32px;height:32px;border-radius:50%;cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.modal-close:hover{background:rgba(200,131,10,.8)}
+
+.modal-body{padding:24px}
+.modal-desc{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:24px}
+
+.modal-section-title{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--gray2);
+  margin-bottom:12px;padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+
+.link-list{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.link-item{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;padding:12px 14px;transition:border-color .2s;
+}
+.link-item:hover{border-color:var(--gold)}
+.link-item-label{font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
+.link-item-label svg{width:16px;height:16px;flex-shrink:0;color:var(--gold2)}
+.link-item a{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;padding:6px 12px;
+  border-radius:6px;background:var(--gold);color:#000;
+  white-space:nowrap;transition:.2s;
+}
+.link-item a:hover{background:var(--gold2)}
+
+/* NO CONTENT */
+.no-content{
+  text-align:center;padding:20px;color:var(--gray2);
+  font-size:13px;border:1px dashed var(--border2);border-radius:8px;
+}
+
+/* COMING SOON overlay on card */
+.coming-tag{
+  position:absolute;top:10px;right:10px;
+  background:rgba(0,0,0,.75);color:var(--gray);
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:3px 8px;border-radius:4px;
+}
+
+/* PDF VIEWER */
+.pdf-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.btn-pdf-read{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(96,165,250,.1);color:#60a5fa;
+  border:1px solid rgba(96,165,250,.3);
+  font-size:11px;font-weight:700;padding:8px 14px;
+  border-radius:6px;cursor:pointer;letter-spacing:.5px;transition:.2s;
+}
+.btn-pdf-read:hover{background:#60a5fa;color:#000}
+.btn-pdf-read.open{background:rgba(239,68,68,.1);color:#f87171;border-color:rgba(239,68,68,.3)}
+.btn-pdf-read.open:hover{background:#f87171;color:#000}
+.pdf-frame-wrap{
+  display:none;width:100%;
+  border:1px solid var(--border2);border-radius:8px;
+  overflow:hidden;margin-bottom:16px;background:var(--bg);
+}
+.pdf-frame-wrap iframe{width:100%;height:72vh;border:none;display:block;background:#fff}
+.pdf-frame-wrap .esv{padding:4px 0 8px}
+.pdf-frame-wrap .esv{padding:20px 0}
+/* ES VIEWER */
+.esv-cover{width:100%;border-radius:8px;overflow:hidden;margin-bottom:20px;max-height:260px;display:flex;align-items:center;justify-content:center;background:var(--bg3)}
+.esv-cover img{width:100%;max-height:260px;object-fit:cover;display:block}
+.esv-intro{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:18px;padding:14px 16px;background:var(--bg3);border-radius:8px;border-left:3px solid var(--gold)}
+.esv-sec{margin-bottom:18px}
+.esv-sec-title{font-size:11px;font-weight:800;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.esv-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.esv-list li{font-size:13px;color:var(--gray);padding:9px 13px;background:var(--bg3);border-radius:6px;border:1px solid var(--border);line-height:1.5}
+.esv-list li strong{color:var(--white)}
+.esv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;margin-bottom:18px}
+.esv-spec{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:3px}
+.esv-spec-lbl{font-size:10px;color:var(--gray2);text-transform:uppercase;letter-spacing:.5px}
+.esv-spec-val{font-size:14px;font-weight:700;color:var(--white)}
+.esv-tip{background:rgba(212,167,75,.08);border:1px solid rgba(212,167,75,.28);border-radius:8px;padding:14px 16px;margin-bottom:18px;font-size:13px;color:var(--gray);line-height:1.7}
+.esv-tip strong{color:var(--gold)}
+.esv-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.esv-step{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--gray);line-height:1.5}
+.esv-num{min-width:22px;height:22px;background:var(--gold);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:2px}
+.esv-note{font-size:11px;color:var(--gray2);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-top:4px}
+.pdf-lang-note{
+  font-size:11px;color:var(--gray2);
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:6px;padding:8px 12px;margin-bottom:12px;
+}
+
+/* RESPONSIVE */
+@media(max-width:960px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .hero-card{grid-template-columns:1fr}
+  .hero-card .ci{max-height:180px}
+  .card-title-hero{font-size:22px}
+  header{padding:0 16px}
+  .logo-text{display:none}
+  main{padding:24px 14px 60px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="assets/images/logo.webp" alt="Mestre da Serralheria" onerror="this.style.display='none'">
+    <span class="logo-text" data-i18n="brand">MESTRE DA SERRALHERIA</span>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLang('pt')">PT</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</header>
+
+<div class="hero">
+  <img src="assets/images/banner-boas-vindas.webp" alt="Bem-vindo">
+  <div class="hero-fade"></div>
+</div>
+
+<main>
+
+  <!-- KIT PRINCIPAL -->
+  <div class="sec-label" style="margin-top:0">
+    <h2 data-i18n="sec_kit">KIT PRINCIPAL</h2>
+  </div>
+  <div class="hero-card" onclick="openModal('kit3000')">
+    <div class="ci">
+      <img src="assets/images/capa-kit-projetos.webp" alt="Kit">
+    </div>
+    <div class="cb">
+      <span class="badge bg-gold" data-i18n="badge_mainkit">★ KIT COMPLETO</span>
+      <h2 class="card-title-hero" data-i18n="kit3000_title">Mais de 2.000 Projetos Prontos</h2>
+      <p class="card-desc-hero" data-i18n="kit3000_desc">Projetos completos com medidas, materiais e passo a passo profissional. Copie, aplique e lucre.</p>
+      <div style="margin-top:8px">
+        <span class="btn btn-gold btn-sm" data-i18n="btn_access">ACESSAR CONTEÚDO</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- REBOQUES E TRANSPORTES -->
+  <div class="sec-label">
+    <h2 data-i18n="sec_reboques">REBOQUES E TRANSPORTES</h2>
+  </div>
+  <div class="grid">
+
+    <div class="pcard" onclick="openModal('portoes')">
+      <div class="ci"><img src="assets/images/portoes.webp" alt="Portões"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="portoes_title">Projeto de Portões com Medidas e Materiais</p>
+        <p class="card-desc" data-i18n="portoes_short">Portões com medidas, materiais e especificações.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('gaiola')">
+      <div class="ci"><img src="assets/images/reboque-gaiola.webp" alt="Gaiola"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="gaiola_title">Reboque Tipo Gaiola</p>
+        <p class="card-desc" data-i18n="gaiola_short">Reboque gaiola com medidas exatas e estrutura reforçada.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('carretinhas')">
+      <div class="ci"><img src="assets/images/capa-carretinha-3600-01.jpg" alt="Carretinha Flatdeck"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="carretinhas_title">Reboque Carretinha Flatdeck 3,6 x 2,0m</p>
+        <p class="card-desc" data-i18n="carretinhas_short">Carretinha 3600x2000, 2400x1500, 2100x1400 e mais.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('barco')">
+      <div class="ci"><img src="assets/images/reboque-barco.webp" alt="Barco"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="barco_title">Projeto Reboque para Barco</p>
+        <p class="card-desc" data-i18n="barco_short">Projeto reboque para barco com lista de peças e medidas exatas.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('jetski')">
+      <div class="ci"><img src="assets/images/reboque-jet-ski.webp" alt="Jet Ski"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="jetski_title">Projeto Reboque para Jet Ski</p>
+        <p class="card-desc" data-i18n="jetski_short">Projeto reboque para jet ski — 3,00m x 1,80m.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('3motos')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M8 17.5h7M9 6h6l2 5.5H7L9 6z"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="3motos_title">Reboque para 3 Motocicletas</p>
+        <p class="card-desc" data-i18n="3motos_short">Reboque com capacidade para transportar até 3 motos.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('foodtruck')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="foodtruck_title">Trailer Food Truck</p>
+        <p class="card-desc" data-i18n="foodtruck_short">Projetos completos de trailers e food trucks em aço.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AUTOMOTIVOS -->
+  <div class="sec-label">
+    <h2 data-i18n="sec_auto">PROJETOS AUTOMOTIVOS</h2>
+  </div>
+  <div class="grid">
+
+    <div class="pcard" onclick="openModal('kart')">
+      <div class="ci"><img src="assets/images/kart-cross.webp" alt="Kart Cross"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="kart_title">Projetos de Kart Cross — Copiar, Fabricar e Lucrar!</p>
+        <p class="card-desc" data-i18n="kart_short">Projetos de kart cross e reboque para kart com estrutura completa.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('auto_todos')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 17h2v-5l2-5h10l2 5v5h2M7 17h10M5 12h14"/><circle cx="8" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="auto_todos_title">Todos os Projetos Automotivos</p>
+        <p class="card-desc" data-i18n="auto_todos_short">Kart, buggy, triciclo motorizado e todos os veículos off-road.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('regularizar')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-blue" data-i18n="badge_guide">GUIA</span>
+        <p class="card-title" data-i18n="regularizar_title">Regularizar Veículo</p>
+        <p class="card-desc" data-i18n="regularizar_short">Como regularizar reboques e veículos automotivos fabricados.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INDUSTRIAIS -->
+  <div class="sec-label">
+    <h2 data-i18n="sec_industrial">PROJETOS INDUSTRIAIS</h2>
+  </div>
+  <div class="grid">
+
+    <div class="pcard" onclick="openModal('moveis')">
+      <div class="ci"><img src="assets/images/capa-moveis-metalon-01.jpg" alt="Móveis em Metalon"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="moveis_title">+80 Projetos de Móveis em Metalon</p>
+        <p class="card-desc" data-i18n="moveis_short">Prateleiras, bancadas, armários e móveis em metalon.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('academia')">
+      <div class="ci"><img src="assets/images/capa-academia-1.jpg" alt="Projetos de Academia"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="academia_title">+100 Projetos de Aparelhos de Academia</p>
+        <p class="card-desc" data-i18n="academia_short">Equipamentos fitness em ferro para fabricar e vender.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('galpoes')">
+      <div class="ci"><img src="assets/images/galpoes.webp" alt="Galpões"></div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="galpoes_title">Projetos Galpões Metálicos</p>
+        <p class="card-desc" data-i18n="galpoes_short">Galpões e estruturas metálicas com plantas técnicas completas.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CAPACITAÇÃO TÉCNICA -->
+  <div class="sec-label">
+    <h2 data-i18n="sec_tech">CAPACITAÇÃO TÉCNICA</h2>
+  </div>
+  <div class="grid">
+
+    <div class="pcard" onclick="openModal('solda')">
+      <div class="ci"><img src="assets/images/mestre-solda.png" alt="Mestre da Solda"></div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_course">CURSO</span>
+        <p class="card-title" data-i18n="solda_title">Mestre da Solda Profissional</p>
+        <p class="card-desc" data-i18n="solda_short">Técnicas profissionais de solda para dominar qualquer projeto.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('pinturas')">
+      <div class="ci"><img src="assets/images/mestre-pinturas.png" alt="Pinturas Industriais"></div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_course">CURSO</span>
+        <p class="card-title" data-i18n="pinturas_title">Mestre das Pinturas Industriais</p>
+        <p class="card-desc" data-i18n="pinturas_short">Técnicas de pintura industrial, acabamento e proteção do aço.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('acabamento')">
+      <div class="ci"><img src="assets/images/acabamento.png" alt="Acabamento"></div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_course">CURSO</span>
+        <p class="card-title" data-i18n="acabamento_title">Acabamento de Mestre</p>
+        <p class="card-desc" data-i18n="acabamento_short">O segredo do acabamento profissional que valoriza cada serviço.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('tipos_aco')">
+      <div class="ci"><img src="assets/images/tipos-aco.webp" alt="Tipos de Aço"></div>
+      <div class="cb">
+        <span class="badge bg-blue" data-i18n="badge_guide">GUIA</span>
+        <p class="card-title" data-i18n="tipos_aco_title">Tipos de Aço & Aplicações</p>
+        <p class="card-desc" data-i18n="tipos_aco_short">Guia completo sobre os principais tipos de aço e onde usar cada um.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('medidas')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 20H5a2 2 0 01-2-2V6a2 2 0 012-2h4M15 4h4a2 2 0 012 2v12a2 2 0 01-2 2h-4M9 4v16M15 4v16M9 9h6M9 13h6"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-blue" data-i18n="badge_guide">GUIA</span>
+        <p class="card-title" data-i18n="medidas_title">Medidas e Cortes em Português BR</p>
+        <p class="card-desc" data-i18n="medidas_short">Guia de medidas, cortes e dimensões para serralheiros.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('organizado')">
+      <div class="ci"><img src="assets/images/mestre-organizado.png" alt="Mestre Organizado"></div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_course">CURSO</span>
+        <p class="card-title" data-i18n="organizado_title">Mestre Organizado e Lucrativo</p>
+        <p class="card-desc" data-i18n="organizado_short">Organize sua serralheria para multiplicar o lucro por projeto.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FERRAMENTAS DE NEGÓCIO -->
+  <div class="sec-label">
+    <h2 data-i18n="sec_tools">FERRAMENTAS DE NEGÓCIO</h2>
+  </div>
+  <div class="grid">
+
+    <div class="pcard" onclick="openModal('precificacao')">
+      <div class="ci"><img src="assets/images/capa-guia-precificacao-01.jpg" alt="Guia de Precificação"></div>
+      <div class="cb">
+        <span class="badge bg-purple" data-i18n="badge_tool">FERRAMENTA</span>
+        <p class="card-title" data-i18n="precificacao_title">Guia Completo de Precificação</p>
+        <p class="card-desc" data-i18n="precificacao_short">Calcule automaticamente o preço certo de cada serviço.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('fornecedores')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 12h6M9 16h4"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-purple" data-i18n="badge_tool">FERRAMENTA</span>
+        <p class="card-title" data-i18n="fornecedores_title">Lista de Fornecedores Selecionados</p>
+        <p class="card-desc" data-i18n="fornecedores_short">Os melhores fornecedores de materiais para sua serralheria.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('cobrar')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-blue" data-i18n="badge_guide">GUIA</span>
+        <p class="card-title" data-i18n="cobrar_title">Como Cobrar Sem Perder Serviço</p>
+        <p class="card-desc" data-i18n="cobrar_short">Aprenda a cobrar o preço justo sem perder clientes.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('cidades')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_bonus">BÔNUS</span>
+        <p class="card-title" data-i18n="cidades_title">Projetos Mais Pedidos em Cidades Pequenas</p>
+        <p class="card-desc" data-i18n="cidades_short">Os projetos que mais geram lucro fora das grandes capitais.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BÔNUS EXCLUSIVOS -->
+  <div class="sec-label">
+    <h2 data-i18n="sec_bonus">BÔNUS EXCLUSIVOS</h2>
+  </div>
+  <div class="grid">
+
+    <div class="pcard" onclick="openModal('dobradora')">
+      <div class="ci"><img src="assets/images/dobradora-chapas.webp" alt="Dobradora"></div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_bonus">BÔNUS</span>
+        <p class="card-title" data-i18n="dobradora_title">Projeto Dobradora de Chapas</p>
+        <p class="card-desc" data-i18n="dobradora_short">Construa sua própria dobradora com lista de peças e medidas.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('carrinho')">
+      <div class="ci"><img src="assets/images/carrinho-chapas.webp" alt="Carrinho"></div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_bonus">BÔNUS</span>
+        <p class="card-title" data-i18n="carrinho_title">Projeto Carrinho Transportador de Chapas</p>
+        <p class="card-desc" data-i18n="carrinho_short">Projeto para construir seu próprio carrinho industrial.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('bonus_kit')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_bonus">BÔNUS</span>
+        <p class="card-title" data-i18n="bonus_kit_title">Bônus: Carretinha + Caixa Automotiva + Caixa Bob</p>
+        <p class="card-desc" data-i18n="bonus_kit_short">Projetos bônus exclusivos para serralheiros automotivos.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('bonus_academia')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M3 8h3M18 8h3M3 16h3M18 16h3M6 12h12"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_bonus">BÔNUS</span>
+        <p class="card-title" data-i18n="bonus_academia_title">Bônus: +95 Projetos de Máquinas de Academia</p>
+        <p class="card-desc" data-i18n="bonus_academia_short">Coleção extra de equipamentos fitness para fabricar.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('bonus_moveis')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 7h18M3 7v13M21 7v13M3 20h18M8 20v-7M16 20v-7M3 13h18"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-green" data-i18n="badge_bonus">BÔNUS</span>
+        <p class="card-title" data-i18n="bonus_moveis_title">Bônus: +1.000 Projetos de Móveis Industriais</p>
+        <p class="card-desc" data-i18n="bonus_moveis_short">A maior coleção de móveis industriais em aço.</p>
+      </div>
+    </div>
+
+    <div class="pcard" onclick="openModal('drive_geral')">
+      <div class="ci">
+        <div class="ph">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+          <span data-i18n="ph_soon">Imagem em breve</span>
+        </div>
+      </div>
+      <div class="cb">
+        <span class="badge bg-gold" data-i18n="badge_projects">PROJETOS</span>
+        <p class="card-title" data-i18n="drive_geral_title">Drive Completo de Conteúdos</p>
+        <p class="card-desc" data-i18n="drive_geral_short">Portões, triciclo, móveis industriais, precificação, fornecedores e mais.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- MODAL OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header" id="modalHeader">
+      <img id="modalImg" src="" alt="">
+      <div class="mh-overlay"></div>
+      <div class="mh-info">
+        <span class="badge bg-gold" id="modalBadge"></span>
+        <h2 class="card-title-hero" style="margin-top:8px" id="modalTitle"></h2>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="modalDesc"></p>
+      <div id="modalDrives"></div>
+      <div id="modalPdfs"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const lang = { current: localStorage.getItem('mds_lang') || 'pt' };
+
+/* ── TRADUÇÕES ────────────────────────────────────────────── */
+const i18n = {
+pt:{
+  brand:'MESTRE DA SERRALHERIA',
+  sec_kit:'KIT PRINCIPAL',
+  sec_reboques:'REBOQUES E TRANSPORTES',
+  sec_auto:'PROJETOS AUTOMOTIVOS',
+  sec_industrial:'PROJETOS INDUSTRIAIS',
+  sec_tech:'CAPACITAÇÃO TÉCNICA',
+  sec_tools:'FERRAMENTAS DE NEGÓCIO',
+  sec_bonus:'BÔNUS EXCLUSIVOS',
+  badge_mainkit:'★ KIT COMPLETO',
+  badge_projects:'PROJETOS',
+  badge_guide:'GUIA',
+  badge_course:'CURSO',
+  badge_tool:'FERRAMENTA',
+  badge_bonus:'BÔNUS',
+  btn_access:'ACESSAR CONTEÚDO',
+  ph_soon:'Imagem em breve',
+  lbl_drives:'LINKS DE ACESSO ONLINE',
+  lbl_pdfs:'DOWNLOADS (PDF)',
+  btn_open:'ABRIR',
+  btn_download:'BAIXAR PDF',
+  no_drives:'Links de acesso online em breve.',
+  no_pdfs:'Material PDF em breve.',
+  // --- produtos ---
+  kit3000_title:'Mais de 2.000 Projetos Prontos',
+  kit3000_desc:'O kit completo do Mestre da Serralheria com mais de 2.000 projetos prontos para copiar, aplicar e lucrar. Medidas detalhadas, lista de materiais e passo a passo profissional.',
+  kit3000_short:'Projetos completos com medidas, materiais e passo a passo profissional.',
+  portoes_title:'Projeto de Portões com Medidas e Materiais',
+  portoes_desc:'Projetos de portões residenciais e comerciais com medidas detalhadas, lista de materiais e passo a passo profissional. Inclui portões comuns, basculantes e automáticos.',
+  portoes_short:'Portões com medidas, lista de materiais e passo a passo.',
+  gaiola_title:'Projeto Reboque Tipo Gaiola',
+  gaiola_desc:'Projeto completo de reboque tipo gaiola — 2,10m. Lista de peças, medidas exatas, passo a passo e detalhes de soldagem. Estrutura reforçada para cargas pesadas.',
+  gaiola_short:'Reboque gaiola 2,10m — medidas exatas e estrutura reforçada.',
+  carretinhas_title:'Reboque Carretinha Flatdeck 3,6 x 2,0m',
+  carretinhas_desc:'Projeto completo de reboque carretinha flatdeck 3,6 x 2,0m. Planta técnica, lista de materiais, medidas detalhadas e instruções de montagem passo a passo.',
+  carretinhas_short:'Reboque Flatdeck 3,6 x 2,0m — planta técnica completa.',
+  barco_title:'Projeto Reboque para Barco',
+  barco_desc:'Projeto reboque para barco — 7,00m x 2,20m. Lista de peças completa, medidas exatas, passo a passo e estrutura reforçada para transporte seguro.',
+  barco_short:'Projeto reboque para barco — 7,00m x 2,20m.',
+  jetski_title:'Projeto Reboque para Jet Ski',
+  jetski_desc:'Projeto reboque para jet ski — 3,00m x 1,80m. Estrutura reforçada, lista de peças, medidas exatas e passo a passo completo.',
+  jetski_short:'Projeto reboque para jet ski — 3,00m x 1,80m.',
+  '3motos_title':'Reboque para 3 Motocicletas',
+  '3motos_desc':'Projeto de reboque com capacidade para transportar até 3 motocicletas simultaneamente. Inclui especificações de fixação, medidas e lista de materiais.',
+  '3motos_short':'Reboque com capacidade para transportar até 3 motos.',
+  foodtruck_title:'Trailer Food Truck',
+  foodtruck_desc:'Projetos completos de trailers e food trucks em aço inoxidável e carbono. Diversos modelos com plantas técnicas, medidas e especificações.',
+  foodtruck_short:'Projetos completos de trailers e food trucks em aço.',
+  kart_title:'Projetos de Kart Cross — Copiar, Fabricar e Lucrar!',
+  kart_desc:'Projetos completos de Kart Cross com estrutura tubular detalhada, lista de materiais e passo a passo. Do projeto ao produto pronto — copie, fabrique e lucre.',
+  kart_short:'Kart Cross — projetos detalhados, lista de materiais e passo a passo.',
+  auto_todos_title:'Todos os Projetos Automotivos',
+  auto_todos_desc:'Acesso a todos os projetos automotivos: kart, buggy, triciclo motorizado, reboques e veículos off-road. A coleção completa em um único lugar.',
+  auto_todos_short:'Kart, buggy, triciclo motorizado e todos os veículos off-road.',
+  regularizar_title:'Regularizar Veículo',
+  regularizar_desc:'Guia completo sobre como regularizar reboques e veículos automotivos fabricados artesanalmente perante o DETRAN e DENATRAN.',
+  regularizar_short:'Como regularizar reboques e veículos automotivos fabricados.',
+  moveis_title:'+80 Projetos de Móveis em Metalon',
+  moveis_desc:'+80 projetos prontos de móveis em metalon 20x20 chapa 18. Prateleiras, bancadas, armários e móveis industriais — copie e fabrique direto.',
+  moveis_short:'+80 projetos de móveis em metalon 20x20 prontos para fabricar.',
+  academia_title:'+100 Projetos de Aparelhos de Academia',
+  academia_desc:'Mais de 100 projetos de aparelhos de academia em ferro: leg press, supino, crossover, barras e muito mais. Fabricar, montar e vender com lucro.',
+  academia_short:'+100 projetos de aparelhos de academia para fabricar e vender.',
+  galpoes_title:'Projetos Galpões Metálicos',
+  galpoes_desc:'Projetos completos de galpões metálicos — vários modelos, plantas técnicas e passo a passo detalhado. Tudo para construir estruturas metálicas profissionais.',
+  galpoes_short:'Galpões metálicos — vários modelos com plantas técnicas completas.',
+  solda_title:'Mestre da Solda Profissional',
+  solda_desc:'Curso completo de soldagem profissional — técnicas de MIG, TIG e eletrodo. Do básico ao avançado para dominar qualquer tipo de solda nos seus projetos.',
+  solda_short:'Técnicas profissionais de solda para dominar qualquer projeto.',
+  pinturas_title:'Mestre das Pinturas Industriais',
+  pinturas_desc:'Aprenda as técnicas de pintura industrial, proteção anticorrosiva, jateamento, primer e acabamento final que diferenciam um trabalho amador de um profissional.',
+  pinturas_short:'Técnicas de pintura industrial, acabamento e proteção do aço.',
+  acabamento_title:'Acabamento de Mestre',
+  acabamento_desc:'O segredo do acabamento profissional que valoriza cada serviço e permite cobrar mais. Lixamento, polimento, galvanização e proteção de superfícies metálicas.',
+  acabamento_short:'O segredo do acabamento profissional que valoriza cada serviço.',
+  tipos_aco_title:'Tipos de Aço & Aplicações',
+  tipos_aco_desc:'Guia completo sobre os principais tipos de aço — aço redondo, viga, viga U, inoxidável, carbono e ligado. Aplicações, características e como escolher o material certo.',
+  tipos_aco_short:'Aço Redondo, Viga, Viga U — aplicações e características de cada.',
+  medidas_title:'Medidas e Cortes em Português BR',
+  medidas_desc:'Guia de medidas, cortes e dimensões para serralheiros brasileiros — normas, bitolas, tubos, chapas e perfis metálicos padronizados.',
+  medidas_short:'Guia de medidas, cortes e dimensões para serralheiros.',
+  organizado_title:'Mestre Organizado e Lucrativo',
+  organizado_desc:'Como organizar sua serralheria, gestão de pedidos, controle de estoque e fluxo de caixa para multiplicar o lucro por projeto.',
+  organizado_short:'Organize sua serralheria para multiplicar o lucro por projeto.',
+  precificacao_title:'Guia Completo de Precificação',
+  precificacao_desc:'Guia completo de precificação: cálculo dos custos (materiais, energia, mão de obra), tempo de trabalho, margem de lucro e pesquisa de mercado. Nunca mais cobre errado.',
+  precificacao_short:'Custos, tempo de trabalho, margem de lucro e pesquisa de mercado.',
+  fornecedores_title:'Lista de Fornecedores Selecionados',
+  fornecedores_desc:'Os melhores e mais confiáveis fornecedores de ferro, aço, tubos, chapas e acessórios para sua serralheria — com contatos e condições especiais.',
+  fornecedores_short:'Os melhores fornecedores de materiais para sua serralheria.',
+  cobrar_title:'Como Cobrar Sem Perder Serviço',
+  cobrar_desc:'Guia prático para aprender a valorizar seu trabalho, apresentar orçamentos profissionais e cobrar o preço justo sem perder clientes para a concorrência.',
+  cobrar_short:'Aprenda a cobrar o preço justo sem perder clientes.',
+  cidades_title:'Projetos Mais Pedidos em Cidades Pequenas',
+  cidades_desc:'Os projetos que mais geram demanda e lucro fora das grandes capitais — portões, coberturas, grades, escadas e estruturas que o mercado regional quer.',
+  cidades_short:'Os projetos que mais geram lucro fora das grandes capitais.',
+  dobradora_title:'Projeto Dobradora de Chapas',
+  dobradora_desc:'Construa sua própria dobradora de chapas profissional. Inclui lista de peças, medidas exatas e passo a passo completo para montar em casa.',
+  dobradora_short:'Construa sua própria dobradora com lista de peças e medidas.',
+  carrinho_title:'Projeto Carrinho Transportador de Chapas',
+  carrinho_desc:'Projeto do carrinho industrial para transporte de chapas metálicas. Estrutura em aço com rodas industriais, lista de peças, medidas exatas e montagem passo a passo.',
+  carrinho_short:'Lista de peças, medidas exatas e passo a passo completo.',
+  bonus_kit_title:'Bônus: Carretinha + Caixa Automotiva + Caixa Bob',
+  bonus_kit_desc:'Pacote bônus com projetos especiais: carretinha compacta, caixa automotiva e caixa bob — perfeito para serralheiros que atendem o segmento automotivo.',
+  bonus_kit_short:'Projetos bônus exclusivos para serralheiros automotivos.',
+  bonus_academia_title:'Bônus: +95 Projetos de Máquinas de Academia',
+  bonus_academia_desc:'Coleção extra com mais de 95 projetos de equipamentos de academia em ferro. Expanda ainda mais seu catálogo de produtos.',
+  bonus_academia_short:'Coleção extra de equipamentos fitness para fabricar.',
+  bonus_moveis_title:'Bônus: +1.000 Projetos de Móveis Industriais',
+  bonus_moveis_desc:'A maior coleção de móveis industriais em aço — mais de 1.000 projetos para ampliar seu catálogo e dominar o mercado de móveis sob medida.',
+  bonus_moveis_short:'A maior coleção de móveis industriais em aço.',
+  drive_geral_title:'Drive Completo de Conteúdos',
+  drive_geral_desc:'Acesso ao drive geral com portões, triciclo, móveis industriais, planilha de precificação, lista de fornecedores e todos os conteúdos do kit.',
+  drive_geral_short:'Portões, triciclo, móveis industriais, precificação, fornecedores e mais.',
+},
+en:{
+  brand:'MASTER OF IRONWORK',
+  sec_kit:'MAIN KIT',
+  sec_reboques:'TRAILERS & TRANSPORT',
+  sec_auto:'AUTOMOTIVE PROJECTS',
+  sec_industrial:'INDUSTRIAL PROJECTS',
+  sec_tech:'TECHNICAL TRAINING',
+  sec_tools:'BUSINESS TOOLS',
+  sec_bonus:'EXCLUSIVE BONUSES',
+  badge_mainkit:'★ FULL KIT',
+  badge_projects:'PROJECTS',
+  badge_guide:'GUIDE',
+  badge_course:'COURSE',
+  badge_tool:'TOOL',
+  badge_bonus:'BONUS',
+  btn_access:'ACCESS CONTENT',
+  ph_soon:'Image coming soon',
+  lbl_drives:'ONLINE ACCESS LINKS',
+  lbl_pdfs:'DOWNLOADS (PDF)',
+  btn_open:'OPEN',
+  btn_download:'DOWNLOAD PDF',
+  no_drives:'Online access links coming soon.',
+  no_pdfs:'PDF material coming soon.',
+  kit3000_title:'Over 2,000 Ready-to-Use Projects',
+  kit3000_desc:'The complete Mestre da Serralheria kit with over 2,000 ready projects to copy, apply and profit from. Detailed measurements, materials list and professional step-by-step guide.',
+  kit3000_short:'Complete projects with measurements, materials and professional step-by-step.',
+  portoes_title:'Gate Projects — Measurements & Materials',
+  portoes_desc:'Residential and commercial gate projects with detailed measurements, materials list and professional step-by-step. Includes standard, tilting and automatic gates.',
+  portoes_short:'Gates with measurements, materials list and step-by-step.',
+  gaiola_title:'Cage-Type Trailer Project',
+  gaiola_desc:'Complete cage trailer project — 2.10m. Parts list, exact measurements, step-by-step and welding details. Reinforced structure for heavy loads.',
+  gaiola_short:'Cage trailer 2.10m — exact measurements and reinforced structure.',
+  carretinhas_title:'Flatdeck Trailer 3.6 x 2.0m',
+  carretinhas_desc:'Complete Flatdeck trailer project — 3.6 x 2.0m. Technical drawing, materials list, detailed measurements and step-by-step assembly instructions.',
+  carretinhas_short:'Flatdeck Trailer 3.6 x 2.0m — complete technical drawing.',
+  barco_title:'Boat Trailer Project',
+  barco_desc:'Boat trailer project — 7.00m x 2.20m. Complete parts list, exact measurements, step-by-step and reinforced structure for safe transport.',
+  barco_short:'Boat trailer project — 7.00m x 2.20m.',
+  jetski_title:'Jet Ski Trailer Project',
+  jetski_desc:'Jet ski trailer project — 3.00m x 1.80m. Reinforced structure, parts list, exact measurements and complete step-by-step.',
+  jetski_short:'Jet ski trailer project — 3.00m x 1.80m.',
+  '3motos_title':'Trailer for 3 Motorcycles',
+  '3motos_desc':'Trailer project capable of transporting up to 3 motorcycles simultaneously. Includes fastening specs, measurements and materials list.',
+  '3motos_short':'Trailer capable of transporting up to 3 motorcycles.',
+  foodtruck_title:'Food Truck Trailer',
+  foodtruck_desc:'Complete food truck trailer projects in stainless and carbon steel. Multiple models with technical drawings, measurements and specifications.',
+  foodtruck_short:'Complete food truck trailer projects in steel.',
+  kart_title:'Kart Cross Projects — Copy, Build & Profit!',
+  kart_desc:'Complete Kart Cross projects with detailed tubular structure, materials list and step-by-step. From blueprint to finished product — copy, build and profit.',
+  kart_short:'Kart Cross — detailed projects, materials list and step-by-step.',
+  auto_todos_title:'All Automotive Projects',
+  auto_todos_desc:'Access to all automotive projects: kart, buggy, motorized trike, trailers and off-road vehicles. The complete collection in one place.',
+  auto_todos_short:'Kart, buggy, motorized trike and all off-road vehicles.',
+  regularizar_title:'Vehicle Registration Guide',
+  regularizar_desc:'Complete guide on how to register handmade trailers and automotive vehicles with transport authorities.',
+  regularizar_short:'How to register handmade trailers and automotive vehicles.',
+  moveis_title:'+80 Steel Tube Furniture Projects',
+  moveis_desc:'+80 ready-made steel tube furniture projects (20x20 gauge 18). Shelves, workbenches, cabinets and industrial furniture — copy and build.',
+  moveis_short:'+80 steel tube 20x20 furniture projects ready to build.',
+  academia_title:'+100 Gym Equipment Projects',
+  academia_desc:'Over 100 iron gym equipment projects: leg press, bench press, crossover, pull-up bars and more. Build, assemble and sell for profit.',
+  academia_short:'+100 gym equipment projects to build and sell.',
+  galpoes_title:'Metal Warehouse Projects',
+  galpoes_desc:'Complete metal warehouse projects — multiple models, technical drawings and detailed step-by-step. Everything to build professional metal structures.',
+  galpoes_short:'Metal warehouses — multiple models with complete technical drawings.',
+  solda_title:'Professional Welding Master',
+  solda_desc:'Complete professional welding course — MIG, TIG and electrode techniques. From beginner to advanced to master every type of weld in your projects.',
+  solda_short:'Professional welding techniques to master any project.',
+  pinturas_title:'Industrial Painting Master',
+  pinturas_desc:'Learn industrial painting, anti-corrosion protection, sandblasting, primer and finishing techniques that set professional work apart.',
+  pinturas_short:'Industrial painting, finishing and steel protection techniques.',
+  acabamento_title:'Master Finishing',
+  acabamento_desc:'The secret of professional finishing that adds value to every job and allows you to charge more. Grinding, polishing, galvanizing and metal surface protection.',
+  acabamento_short:'The secret of professional finishing that adds value to every job.',
+  tipos_aco_title:'Steel Types & Applications',
+  tipos_aco_desc:'Complete guide to the main steel types — round bar, I-beam, U-channel, stainless, carbon and alloy. Applications, properties and how to choose the right material.',
+  tipos_aco_short:'Round bar, I-beam, U-channel — applications and properties of each.',
+  medidas_title:'Brazilian Measurements & Cuts Guide',
+  medidas_desc:'Measurements, cuts and dimensions guide for Brazilian ironworkers — standards, gauges, tubes, sheets and standardized metal profiles.',
+  medidas_short:'Measurements, cuts and dimensions guide for ironworkers.',
+  organizado_title:'Organized & Profitable Master',
+  organizado_desc:'How to organize your ironwork shop, manage orders, control inventory and cash flow to multiply profit per project.',
+  organizado_short:'Organize your shop to multiply profit per project.',
+  precificacao_title:'Complete Pricing Guide',
+  precificacao_desc:'Complete pricing guide: cost calculation (materials, energy, labor), work time, profit margin and market research. Never underprice again.',
+  precificacao_short:'Costs, work time, profit margin and market research.',
+  fornecedores_title:'Curated Suppliers List',
+  fornecedores_desc:'The best and most reliable suppliers of iron, steel, tubes, sheets and accessories for your ironwork shop — with contacts and special terms.',
+  fornecedores_short:'The best material suppliers for your ironwork shop.',
+  cobrar_title:'How to Charge Without Losing Business',
+  cobrar_desc:'Practical guide to valuing your work, presenting professional quotes and charging fair prices without losing clients to competitors.',
+  cobrar_short:'Learn to charge fair prices without losing clients.',
+  cidades_title:'Most-Requested Projects in Small Towns',
+  cidades_desc:'The projects that generate the most demand and profit outside major cities — gates, roofing, grilles, stairs and structures the regional market wants.',
+  cidades_short:'Projects that generate the most profit outside major cities.',
+  dobradora_title:'Sheet Metal Bender Project',
+  dobradora_desc:'Build your own professional sheet metal bending machine. Includes parts list, exact measurements and complete step-by-step assembly guide.',
+  dobradora_short:'Build your own sheet bender with parts list and measurements.',
+  carrinho_title:'Sheet Metal Transport Cart Project',
+  carrinho_desc:'Industrial cart project for transporting metal sheets. Steel structure with industrial wheels, parts list, exact measurements and step-by-step assembly.',
+  carrinho_short:'Parts list, exact measurements and complete step-by-step.',
+  bonus_kit_title:'Bonus: Trailer + Auto Box + Bob Box',
+  bonus_kit_desc:'Bonus pack with special projects: compact trailer, auto box and bob box — perfect for ironworkers serving the automotive segment.',
+  bonus_kit_short:'Exclusive bonus projects for automotive ironworkers.',
+  bonus_academia_title:'Bonus: +95 Gym Equipment Projects',
+  bonus_academia_desc:'Extra collection with over 95 iron gym equipment projects. Expand your product catalog even further.',
+  bonus_academia_short:'Extra collection of fitness equipment to build.',
+  bonus_moveis_title:'Bonus: +1,000 Industrial Furniture Projects',
+  bonus_moveis_desc:'The largest collection of industrial steel furniture — over 1,000 projects to expand your catalog and dominate the custom furniture market.',
+  bonus_moveis_short:'The largest collection of industrial steel furniture.',
+  drive_geral_title:'Complete Content Drive',
+  drive_geral_desc:'Access to the general drive with gates, trike, industrial furniture, pricing spreadsheet, suppliers list and all kit content.',
+  drive_geral_short:'Gates, trike, industrial furniture, pricing, suppliers and more.',
+},
+es:{
+  brand:'MAESTRO DE LA HERRERÍA',
+  sec_kit:'KIT PRINCIPAL',
+  sec_reboques:'REMOLQUES Y TRANSPORTES',
+  sec_auto:'PROYECTOS AUTOMOTRICES',
+  sec_industrial:'PROYECTOS INDUSTRIALES',
+  sec_tech:'CAPACITACIÓN TÉCNICA',
+  sec_tools:'HERRAMIENTAS DE NEGOCIO',
+  sec_bonus:'BONOS EXCLUSIVOS',
+  badge_mainkit:'★ KIT COMPLETO',
+  badge_projects:'PROYECTOS',
+  badge_guide:'GUÍA',
+  badge_course:'CURSO',
+  badge_tool:'HERRAMIENTA',
+  badge_bonus:'BONO',
+  btn_access:'ACCEDER AL CONTENIDO',
+  ph_soon:'Imagen próximamente',
+  lbl_drives:'ENLACES DE ACCESO EN LÍNEA',
+  lbl_pdfs:'DESCARGAS (PDF)',
+  btn_open:'ABRIR',
+  btn_download:'DESCARGAR PDF',
+  no_drives:'Enlaces de acceso en línea próximamente.',
+  no_pdfs:'Material PDF próximamente.',
+  kit3000_title:'Más de 2.000 Proyectos Listos',
+  kit3000_desc:'El kit completo del Mestre da Serralheria con más de 2.000 proyectos listos para copiar, aplicar y lucrar. Medidas detalladas, lista de materiales y guía paso a paso profesional.',
+  kit3000_short:'Proyectos completos con medidas, materiales y guía paso a paso profesional.',
+  portoes_title:'Proyecto de Portones — Medidas y Materiales',
+  portoes_desc:'Proyectos de portones residenciales y comerciales con medidas detalladas, lista de materiales y guía paso a paso profesional. Incluye portones comunes, basculantes y automáticos.',
+  portoes_short:'Portones con medidas, lista de materiales y paso a paso.',
+  gaiola_title:'Proyecto Remolque Tipo Jaula',
+  gaiola_desc:'Proyecto completo de remolque tipo jaula — 2,10m. Lista de piezas, medidas exactas, paso a paso y detalles de soldadura. Estructura reforzada para cargas pesadas.',
+  gaiola_short:'Remolque jaula 2,10m — medidas exactas y estructura reforzada.',
+  carretinhas_title:'Remolque Flatdeck 3,6 x 2,0m',
+  carretinhas_desc:'Proyecto completo de remolque flatdeck 3,6 x 2,0m. Plano técnico, lista de materiales, medidas detalladas e instrucciones de montaje paso a paso.',
+  carretinhas_short:'Remolque Flatdeck 3,6 x 2,0m — plano técnico completo.',
+  barco_title:'Proyecto Remolque para Bote',
+  barco_desc:'Proyecto remolque para bote — 7,00m x 2,20m. Lista de piezas completa, medidas exactas, paso a paso y estructura reforzada para transporte seguro.',
+  barco_short:'Proyecto remolque para bote — 7,00m x 2,20m.',
+  jetski_title:'Proyecto Remolque para Jet Ski',
+  jetski_desc:'Proyecto remolque para jet ski — 3,00m x 1,80m. Estructura reforzada, lista de piezas, medidas exactas y paso a paso completo.',
+  jetski_short:'Proyecto remolque para jet ski — 3,00m x 1,80m.',
+  '3motos_title':'Remolque para 3 Motocicletas',
+  '3motos_desc':'Proyecto de remolque con capacidad para transportar hasta 3 motocicletas simultáneamente. Incluye especificaciones de fijación, medidas y lista de materiales.',
+  '3motos_short':'Remolque con capacidad para transportar hasta 3 motos.',
+  foodtruck_title:'Trailer Food Truck',
+  foodtruck_desc:'Proyectos completos de trailers y food trucks en acero inoxidable y carbono. Diversos modelos con planos técnicos, medidas y especificaciones.',
+  foodtruck_short:'Proyectos completos de trailers y food trucks en acero.',
+  kart_title:'Proyectos de Kart Cross — ¡Copiar, Fabricar y Lucrar!',
+  kart_desc:'Proyectos completos de Kart Cross con estructura tubular detallada, lista de materiales y paso a paso. Del proyecto al producto terminado — copie, fabrique y lucre.',
+  kart_short:'Kart Cross — proyectos detallados, lista de materiales y paso a paso.',
+  auto_todos_title:'Todos los Proyectos Automotrices',
+  auto_todos_desc:'Acceso a todos los proyectos automotrices: kart, buggy, triciclo motorizado, remolques y vehículos todo terreno. La colección completa en un solo lugar.',
+  auto_todos_short:'Kart, buggy, triciclo motorizado y todos los vehículos off-road.',
+  regularizar_title:'Regularizar Vehículo',
+  regularizar_desc:'Guía completa sobre cómo regularizar remolques y vehículos automotrices fabricados artesanalmente ante las autoridades de tránsito.',
+  regularizar_short:'Cómo regularizar remolques y vehículos automotrices fabricados.',
+  moveis_title:'+80 Proyectos de Muebles en Tubo Metálico',
+  moveis_desc:'+80 proyectos listos de muebles en tubo metálico 20x20 calibre 18. Estantes, bancos de trabajo, armarios y muebles industriales — copie y fabrique.',
+  moveis_short:'+80 proyectos de tubo metálico 20x20 listos para fabricar.',
+  academia_title:'+100 Proyectos de Máquinas de Gimnasio',
+  academia_desc:'Más de 100 proyectos de aparatos de gimnasio en hierro: leg press, press de banca, crossover, barras y más. Fabricar, montar y vender con ganancia.',
+  academia_short:'+100 proyectos de aparatos de gimnasio para fabricar y vender.',
+  galpoes_title:'Proyectos de Naves Metálicas',
+  galpoes_desc:'Proyectos completos de naves metálicas — varios modelos, planos técnicos y paso a paso detallado. Todo para construir estructuras metálicas profesionales.',
+  galpoes_short:'Naves metálicas — varios modelos con planos técnicos completos.',
+  solda_title:'Maestro de la Soldadura Profesional',
+  solda_desc:'Curso completo de soldadura profesional — técnicas MIG, TIG y electrodo. Del básico al avanzado para dominar cualquier tipo de soldadura en sus proyectos.',
+  solda_short:'Técnicas profesionales de soldadura para dominar cualquier proyecto.',
+  pinturas_title:'Maestro de Pinturas Industriales',
+  pinturas_desc:'Aprenda técnicas de pintura industrial, protección anticorrosiva, granallado, imprimación y acabado final que distinguen un trabajo profesional.',
+  pinturas_short:'Técnicas de pintura industrial, acabado y protección del acero.',
+  acabamento_title:'Acabado de Maestro',
+  acabamento_desc:'El secreto del acabado profesional que valoriza cada trabajo y permite cobrar más. Lijado, pulido, galvanizado y protección de superficies metálicas.',
+  acabamento_short:'El secreto del acabado profesional que valoriza cada trabajo.',
+  tipos_aco_title:'Tipos de Acero & Aplicaciones',
+  tipos_aco_desc:'Guía completa sobre los principales tipos de acero — barra redonda, viga, viga U, inoxidable, carbono y aleado. Aplicaciones, propiedades y cómo elegir el material correcto.',
+  tipos_aco_short:'Barra redonda, viga, viga U — aplicaciones y propiedades de cada uno.',
+  medidas_title:'Guía de Medidas y Cortes BR',
+  medidas_desc:'Guía de medidas, cortes y dimensiones para herreros brasileños — normas, calibres, tubos, chapas y perfiles metálicos estandarizados.',
+  medidas_short:'Guía de medidas, cortes y dimensiones para herreros.',
+  organizado_title:'Maestro Organizado y Lucrativo',
+  organizado_desc:'Cómo organizar su herrería, gestionar pedidos, controlar inventario y flujo de caja para multiplicar la ganancia por proyecto.',
+  organizado_short:'Organice su herrería para multiplicar la ganancia por proyecto.',
+  precificacao_title:'Guía Completa de Precios',
+  precificacao_desc:'Guía completa de precios: cálculo de costos (materiales, energía, mano de obra), tiempo de trabajo, margen de ganancia e investigación de mercado. Nunca más cobre mal.',
+  precificacao_short:'Costos, tiempo de trabajo, margen de ganancia e investigación de mercado.',
+  fornecedores_title:'Lista de Proveedores Seleccionados',
+  fornecedores_desc:'Los mejores y más confiables proveedores de hierro, acero, tubos, chapas y accesorios para su herrería — con contactos y condiciones especiales.',
+  fornecedores_short:'Los mejores proveedores de materiales para su herrería.',
+  cobrar_title:'Cómo Cobrar Sin Perder Trabajo',
+  cobrar_desc:'Guía práctica para valorar su trabajo, presentar presupuestos profesionales y cobrar precios justos sin perder clientes a la competencia.',
+  cobrar_short:'Aprenda a cobrar precios justos sin perder clientes.',
+  cidades_title:'Proyectos Más Pedidos en Ciudades Pequeñas',
+  cidades_desc:'Los proyectos que más demanda y ganancia generan fuera de las grandes ciudades — portones, coberturas, rejas, escaleras y estructuras que el mercado regional quiere.',
+  cidades_short:'Proyectos que generan más ganancia fuera de las grandes ciudades.',
+  dobradora_title:'Proyecto Dobladora de Chapas',
+  dobradora_desc:'Construya su propia dobladora de chapas profesional. Incluye lista de piezas, medidas exactas y guía de montaje paso a paso.',
+  dobradora_short:'Construya su propia dobladora con lista de piezas y medidas.',
+  carrinho_title:'Proyecto Carrito Transportador de Chapas',
+  carrinho_desc:'Proyecto de carrito industrial para transporte de chapas metálicas. Estructura de acero con ruedas industriales, lista de piezas, medidas exactas y montaje paso a paso.',
+  carrinho_short:'Lista de piezas, medidas exactas y paso a paso completo.',
+  bonus_kit_title:'Bono: Carretilla + Caja Automotiva + Caja Bob',
+  bonus_kit_desc:'Paquete bono con proyectos especiales: carretilla compacta, caja automotiva y caja bob — perfecto para herreros del segmento automotriz.',
+  bonus_kit_short:'Proyectos bono exclusivos para herreros automotrices.',
+  bonus_academia_title:'Bono: +95 Proyectos de Máquinas de Gimnasio',
+  bonus_academia_desc:'Colección extra con más de 95 proyectos de equipos de gimnasio en hierro. Amplíe aún más su catálogo de productos.',
+  bonus_academia_short:'Colección extra de equipos de fitness para fabricar.',
+  bonus_moveis_title:'Bono: +1.000 Proyectos de Muebles Industriales',
+  bonus_moveis_desc:'La mayor colección de muebles industriales en acero — más de 1.000 proyectos para ampliar su catálogo y dominar el mercado de muebles a medida.',
+  bonus_moveis_short:'La mayor colección de muebles industriales en acero.',
+  drive_geral_title:'Drive Completo de Contenidos',
+  drive_geral_desc:'Acceso al drive general con portones, triciclo, muebles industriales, planilla de precios, lista de proveedores y todos los contenidos del kit.',
+  drive_geral_short:'Portones, triciclo, muebles industriales, precios, proveedores y más.',
+}
+};
+
+/* ── DADOS DOS PRODUTOS ───────────────────────────────────── */
+const PRODUCTS = {
+  kit3000:{
+    img:'assets/images/capa-kit-projetos.webp',
+    badge:'badge_mainkit',
+    title:'kit3000_title', desc:'kit3000_desc',
+    drives:[
+      {key:'kit_d1', url:'https://drive.google.com/drive/folders/1emwg-x5uPwyVuWK3sVQG2Les6SG8t1Eg'},
+      {key:'kit_d2', url:'https://drive.google.com/drive/folders/12Qaud7HU9S6nahncGaygmJPUadDJCh_S'}
+    ],
+    pdfs:[]
+  },
+  portoes:{
+    img:'assets/images/portoes.webp', badge:'badge_projects',
+    title:'portoes_title', desc:'portoes_desc',
+    drives:[{key:'portoes_d1', url:'https://drive.google.com/drive/folders/1P85LUArGAHEbEsAq9c3DNVMns3y1qSMv'}],
+    pdfs:[{key:'portoes_p1', file:'assets/pdfs/portoes.pdf'}]
+  },
+  gaiola:{
+    img:'assets/images/reboque-gaiola.webp', badge:'badge_projects',
+    title:'gaiola_title', desc:'gaiola_desc',
+    drives:[{key:'gaiola_d1', url:'https://drive.google.com/drive/folders/1Smo0wapGzc0SIAcLYO4CGzQlW3PkI7Jl'}],
+    pdfs:[{key:'gaiola_p1', file:'assets/pdfs/reboque-gaiola.pdf'}]
+  },
+  carretinhas:{
+    img:'assets/images/capa-carretinha-3600-01.jpg', badge:'badge_projects',
+    title:'carretinhas_title', desc:'carretinhas_desc',
+    drives:[{key:'carretinhas_d1', url:'https://drive.google.com/drive/folders/1qxpkFCQdLyBnaCKQJt7fPYUgjMgQfv9p'}],
+    pdfs:[{key:'carretinhas_p1', file:'assets/pdfs/carretinha-3600.pdf'}]
+  },
+  barco:{
+    img:'assets/images/reboque-barco.webp', badge:'badge_projects',
+    title:'barco_title', desc:'barco_desc',
+    drives:[{key:'barco_d1', url:'https://drive.google.com/drive/folders/1D4CCLNk6P95c7f3CGioAQ-8gAuxOmBKE'}],
+    pdfs:[{key:'barco_p1', file:'assets/pdfs/reboque-barco.pdf'}]
+  },
+  jetski:{
+    img:'assets/images/reboque-jet-ski.webp', badge:'badge_projects',
+    title:'jetski_title', desc:'jetski_desc',
+    drives:[{key:'jetski_d1', url:'https://drive.google.com/drive/folders/1D4CCLNk6P95c7f3CGioAQ-8gAuxOmBKE'}],
+    pdfs:[{key:'jetski_p1', file:'assets/pdfs/reboque-jetski.pdf'}]
+  },
+  '3motos':{
+    img:'', badge:'badge_projects',
+    title:'3motos_title', desc:'3motos_desc',
+    drives:[{key:'3motos_d1', url:'https://drive.google.com/file/d/1YKYhsE4t1qCO-7pZJzy-1rE4gUrIbzfk/view'}],
+    pdfs:[]
+  },
+  foodtruck:{
+    img:'', badge:'badge_projects',
+    title:'foodtruck_title', desc:'foodtruck_desc',
+    drives:[{key:'foodtruck_d1', url:'https://drive.google.com/drive/folders/1YBDY03S2ATFLV5pz8U9--hrwHsKryq_P'}],
+    pdfs:[]
+  },
+  kart:{
+    img:'assets/images/kart-cross.webp', badge:'badge_projects',
+    title:'kart_title', desc:'kart_desc',
+    drives:[
+      {key:'kart_d1', url:'https://drive.google.com/drive/folders/1qwgrOlmi40uDjVCP-nQl91Tbe2bQA_yw'},
+      {key:'kart_d2', url:'https://drive.google.com/drive/u/2/folders/1fPTs9w5ae23mDffAbVhrktacXPv_hRwa'}
+    ],
+    pdfs:[{key:'kart_p1', file:'assets/pdfs/kart-cross.pdf'}]
+  },
+  auto_todos:{
+    img:'', badge:'badge_projects',
+    title:'auto_todos_title', desc:'auto_todos_desc',
+    drives:[{key:'auto_d1', url:'https://drive.google.com/drive/folders/1YtqAwduURnOPvVqwJ-6h_02IvyBfdSUO'}],
+    pdfs:[]
+  },
+  regularizar:{
+    img:'', badge:'badge_guide',
+    title:'regularizar_title', desc:'regularizar_desc',
+    drives:[{key:'reg_d1', url:'https://drive.google.com/drive/folders/1ciGXOJEUBGFInA6Hp5ChS1IP4fPPeUa7'}],
+    pdfs:[]
+  },
+  moveis:{
+    img:'assets/images/capa-moveis-metalon-01.jpg', badge:'badge_projects',
+    title:'moveis_title', desc:'moveis_desc',
+    drives:[{key:'mov_d1', url:'https://drive.google.com/drive/folders/1PSWdKMOW8W3f-57MJ-7PY20lWA5QXeKx'}],
+    pdfs:[{key:'mov_p1', file:'assets/pdfs/moveis-metalon.pdf'}]
+  },
+  academia:{
+    img:'assets/images/capa-academia-1.jpg', badge:'badge_projects',
+    title:'academia_title', desc:'academia_desc',
+    drives:[{key:'ac_d1', url:'https://drive.google.com/drive/folders/14J-_ufBQWmxC0k5o6idxfidj5kMrPa8W'}],
+    pdfs:[{key:'ac_p1', file:'assets/pdfs/academia.pdf'}]
+  },
+  galpoes:{
+    img:'assets/images/galpoes.webp', badge:'badge_projects',
+    title:'galpoes_title', desc:'galpoes_desc',
+    drives:[],
+    pdfs:[{key:'galp_p1', file:'assets/pdfs/galpoes.pdf'}]
+  },
+  solda:{
+    img:'assets/images/mestre-solda.png', badge:'badge_course',
+    title:'solda_title', desc:'solda_desc',
+    drives:[],
+    pdfs:[
+      {key:'solda_p1', file:'assets/pdfs/mestre-solda-novo.pdf'},
+      {key:'solda_p2', file:'assets/pdfs/mestre-solda.pdf'}
+    ]
+  },
+  pinturas:{
+    img:'assets/images/mestre-pinturas.png', badge:'badge_course',
+    title:'pinturas_title', desc:'pinturas_desc',
+    drives:[],
+    pdfs:[]
+  },
+  acabamento:{
+    img:'assets/images/acabamento.png', badge:'badge_course',
+    title:'acabamento_title', desc:'acabamento_desc',
+    drives:[],
+    pdfs:[]
+  },
+  tipos_aco:{
+    img:'assets/images/tipos-aco.webp', badge:'badge_guide',
+    title:'tipos_aco_title', desc:'tipos_aco_desc',
+    drives:[],
+    pdfs:[{key:'aco_p1', file:'assets/pdfs/tipos-aco.pdf'}]
+  },
+  medidas:{
+    img:'', badge:'badge_guide',
+    title:'medidas_title', desc:'medidas_desc',
+    drives:[{key:'med_d1', url:'https://drive.google.com/drive/u/1/folders/1RPfEBA-AjsMOjtRs8mNl5asHURF9ddZB'}],
+    pdfs:[]
+  },
+  organizado:{
+    img:'assets/images/mestre-organizado.png', badge:'badge_course',
+    title:'organizado_title', desc:'organizado_desc',
+    drives:[],
+    pdfs:[]
+  },
+  precificacao:{
+    img:'assets/images/capa-guia-precificacao-01.jpg', badge:'badge_tool',
+    title:'precificacao_title', desc:'precificacao_desc',
+    drives:[{key:'prec_d1', url:'https://kommo.cc/K/WYM1DY/WUO24M'}],
+    pdfs:[{key:'prec_p1', file:'assets/pdfs/guia-precificacao.pdf'}]
+  },
+  fornecedores:{
+    img:'', badge:'badge_tool',
+    title:'fornecedores_title', desc:'fornecedores_desc',
+    drives:[{key:'forn_d1', url:'https://kommo.cc/K/WYM1DY/WUO24M'}],
+    pdfs:[]
+  },
+  cobrar:{
+    img:'', badge:'badge_guide',
+    title:'cobrar_title', desc:'cobrar_desc',
+    drives:[{key:'cob_d1', url:'https://kommo.cc/K/WYM1DY/WUO24M'}],
+    pdfs:[]
+  },
+  cidades:{
+    img:'', badge:'badge_bonus',
+    title:'cidades_title', desc:'cidades_desc',
+    drives:[{key:'cid_d1', url:'https://kommo.cc/K/WYM1FA/WUO25W'}],
+    pdfs:[]
+  },
+  dobradora:{
+    img:'assets/images/dobradora-chapas.webp', badge:'badge_bonus',
+    title:'dobradora_title', desc:'dobradora_desc',
+    drives:[],
+    pdfs:[{key:'dob_p1', file:'assets/pdfs/dobradora.pdf'}]
+  },
+  carrinho:{
+    img:'assets/images/carrinho-chapas.webp', badge:'badge_bonus',
+    title:'carrinho_title', desc:'carrinho_desc',
+    drives:[],
+    pdfs:[{key:'car_p1', file:'assets/pdfs/carrinho.pdf'}]
+  },
+  bonus_kit:{
+    img:'', badge:'badge_bonus',
+    title:'bonus_kit_title', desc:'bonus_kit_desc',
+    drives:[{key:'bk_d1', url:'https://kommo.cc/K/WYM1D4/WUO23S'}],
+    pdfs:[]
+  },
+  bonus_academia:{
+    img:'', badge:'badge_bonus',
+    title:'bonus_academia_title', desc:'bonus_academia_desc',
+    drives:[{key:'ba_d1', url:'https://kommo.cc/K/WYNIBA/WUPHNE'}],
+    pdfs:[]
+  },
+  bonus_moveis:{
+    img:'', badge:'badge_bonus',
+    title:'bonus_moveis_title', desc:'bonus_moveis_desc',
+    drives:[{key:'bm_d1', url:'https://kommo.cc/K/WYNIBI/WUPHNM'}],
+    pdfs:[]
+  },
+  drive_geral:{
+    img:'', badge:'badge_projects',
+    title:'drive_geral_title', desc:'drive_geral_desc',
+    drives:[
+      {key:'dg_d1', url:'https://kommo.cc/K/WYM1DY/WUO24M'},
+      {key:'dg_d2', url:'https://kommo.cc/K/WYM1FA/WUO25W'}
+    ],
+    pdfs:[]
+  }
+};
+
+/* ── LABELS DE DRIVE (traduzidos) ─────────────────────────── */
+const DRIVE_LABELS = {
+  pt:{
+    kit_d1:'Pasta 1 — +2.000 Projetos',
+    kit_d2:'Pasta 2 — +1.000 Projetos',
+    portoes_d1:'Drive — Projetos de Portões',
+    gaiola_d1:'Drive — Reboque Gaiola',
+    carretinhas_d1:'Drive — Carretinhas e Reboques',
+    barco_d1:'Drive — Barco e Jet Ski',
+    jetski_d1:'Drive — Barco e Jet Ski',
+    '3motos_d1':'Arquivo — Reboque 3 Motos',
+    foodtruck_d1:'Drive — Trailer Food Truck',
+    kart_d1:'Drive — Kart Cross (Pasta 1)',
+    kart_d2:'Drive — Kart Cross (Pasta 2)',
+    auto_d1:'Drive — Todos os Automotivos',
+    reg_d1:'Drive — Regularizar Veículo',
+    mov_d1:'Drive — Móveis Industriais',
+    ac_d1:'Drive — Aparelhos de Academia',
+    med_d1:'Drive — Medidas e Cortes BR',
+    prec_d1:'Drive Geral (Precificação + Fornecedores)',
+    forn_d1:'Drive Geral (Precificação + Fornecedores)',
+    cob_d1:'Drive Geral de Conteúdos',
+    cid_d1:'Drive — Restante dos Projetos',
+    bk_d1:'Bônus — Carretinha + Caixas',
+    ba_d1:'Bônus — +95 Máquinas de Academia',
+    bm_d1:'Bônus — +1.000 Móveis Industriais',
+    dg_d1:'Drive Geral — Portões, Triciclo, Móveis, Precificação',
+    dg_d2:'Drive — Restante dos Projetos',
+  },
+  en:{
+    kit_d1:'Folder 1 — +2,000 Projects',
+    kit_d2:'Folder 2 — +1,000 Projects',
+    portoes_d1:'Drive — Gate Projects',
+    gaiola_d1:'Drive — Cage Trailer',
+    carretinhas_d1:'Drive — Trailers & Carriages',
+    barco_d1:'Drive — Boat & Jet Ski',
+    jetski_d1:'Drive — Boat & Jet Ski',
+    '3motos_d1':'File — 3-Motorcycle Trailer',
+    foodtruck_d1:'Drive — Food Truck Trailer',
+    kart_d1:'Drive — Kart Cross (Folder 1)',
+    kart_d2:'Drive — Kart Cross (Folder 2)',
+    auto_d1:'Drive — All Automotive Projects',
+    reg_d1:'Drive — Vehicle Registration',
+    mov_d1:'Drive — Industrial Furniture',
+    ac_d1:'Drive — Gym Equipment',
+    med_d1:'Drive — Brazilian Measurements Guide',
+    prec_d1:'General Drive (Pricing + Suppliers)',
+    forn_d1:'General Drive (Pricing + Suppliers)',
+    cob_d1:'General Content Drive',
+    cid_d1:'Drive — Remaining Projects',
+    bk_d1:'Bonus — Trailer + Auto Boxes',
+    ba_d1:'Bonus — +95 Gym Machines',
+    bm_d1:'Bonus — +1,000 Industrial Furniture',
+    dg_d1:'General Drive — Gates, Trike, Furniture, Pricing',
+    dg_d2:'Drive — Remaining Projects',
+  },
+  es:{
+    kit_d1:'Carpeta 1 — +2.000 Proyectos',
+    kit_d2:'Carpeta 2 — +1.000 Proyectos',
+    portoes_d1:'Drive — Proyectos de Portones',
+    gaiola_d1:'Drive — Remolque Jaula',
+    carretinhas_d1:'Drive — Carretillas y Remolques',
+    barco_d1:'Drive — Bote y Jet Ski',
+    jetski_d1:'Drive — Bote y Jet Ski',
+    '3motos_d1':'Archivo — Remolque 3 Motos',
+    foodtruck_d1:'Drive — Trailer Food Truck',
+    kart_d1:'Drive — Kart Cross (Carpeta 1)',
+    kart_d2:'Drive — Kart Cross (Carpeta 2)',
+    auto_d1:'Drive — Todos los Automotrices',
+    reg_d1:'Drive — Regularizar Vehículo',
+    mov_d1:'Drive — Muebles Industriales',
+    ac_d1:'Drive — Máquinas de Gimnasio',
+    med_d1:'Drive — Guía de Medidas BR',
+    prec_d1:'Drive General (Precios + Proveedores)',
+    forn_d1:'Drive General (Precios + Proveedores)',
+    cob_d1:'Drive General de Contenidos',
+    cid_d1:'Drive — Proyectos Restantes',
+    bk_d1:'Bono — Carretilla + Cajas',
+    ba_d1:'Bono — +95 Máquinas de Gimnasio',
+    bm_d1:'Bono — +1.000 Muebles Industriales',
+    dg_d1:'Drive General — Portones, Triciclo, Muebles, Precios',
+    dg_d2:'Drive — Proyectos Restantes',
+  }
+};
+
+const PDF_LABELS = {
+  pt:{
+    portoes_p1:'Projetos de Portões com Fotos',
+    gaiola_p1:'Projeto Reboque Tipo Gaiola',
+    carretinhas_p1:'Reboque Carretinha 3600 x 2000',
+    barco_p1:'Projeto Reboque para Barco',
+    jetski_p1:'Projeto Reboque para Jet Ski',
+    kart_p1:'Mestre Serralheiro — Kart Cross',
+    mov_p1:'+80 Projetos de Móveis Metalon',
+    ac_p1:'+100 Projetos de Aparelhos de Academia',
+    galp_p1:'Projetos Galpões Metálicos',
+    solda_p1:'Mestre da Solda (versão novo)',
+    solda_p2:'Mestre da Solda Profissional',
+    aco_p1:'Bônus — Tipos de Aços e Aplicações',
+    dob_p1:'Dobradora de Chapas — O Mestre',
+    car_p1:'Carrinho Transportador de Chapas',
+    prec_p1:'Bônus 2 — Guia de Precificação',
+  },
+  en:{
+    portoes_p1:'Gate Projects with Photos',
+    gaiola_p1:'Cage Trailer Project',
+    carretinhas_p1:'Trailer Carriage 3600 x 2000',
+    barco_p1:'Boat Trailer Project',
+    jetski_p1:'Jet Ski Trailer Project',
+    kart_p1:'Ironwork Master — Kart Cross',
+    mov_p1:'+80 Steel Tube Furniture Projects',
+    ac_p1:'+100 Gym Equipment Projects',
+    galp_p1:'Metal Warehouse Projects',
+    solda_p1:'Welding Master (new version)',
+    solda_p2:'Professional Welding Master',
+    aco_p1:'Bonus — Steel Types & Applications',
+    dob_p1:'Sheet Metal Bender — O Mestre',
+    car_p1:'Sheet Transport Cart',
+    prec_p1:'Bonus 2 — Pricing Guide',
+  },
+  es:{
+    portoes_p1:'Proyectos de Portones con Fotos',
+    gaiola_p1:'Proyecto Remolque Tipo Jaula',
+    carretinhas_p1:'Carretilla Remolque 3600 x 2000',
+    barco_p1:'Proyecto Remolque para Bote',
+    jetski_p1:'Proyecto Remolque para Jet Ski',
+    kart_p1:'Maestro Herrero — Kart Cross',
+    mov_p1:'+80 Proyectos Muebles Metalon',
+    ac_p1:'+100 Proyectos Máquinas de Gimnasio',
+    galp_p1:'Proyectos Naves Metálicas',
+    solda_p1:'Maestro de la Soldadura (nueva versión)',
+    solda_p2:'Maestro de la Soldadura Profesional',
+    aco_p1:'Bono — Tipos de Acero y Aplicaciones',
+    dob_p1:'Dobladora de Chapas — O Mestre',
+    car_p1:'Carrito Transportador de Chapas',
+    prec_p1:'Bono 2 — Guía de Precios',
+  }
+};
+
+/* ── MODAL ───────────────────────────────────────────────── */
+const READ_LABELS = {
+  pt:{ open:'📖 LER ONLINE', close:'✕ FECHAR LEITURA' },
+  es:{ open:'📖 LEER EN LÍNEA', close:'✕ CERRAR LECTURA' }
+};
+
+const ES_CONTENT = {
+portoes_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/portoes.webp" alt="Portones"></div>
+<p class="esv-intro">Proyectos completos de portones para fabricar, vender y lucrar. Cada modelo incluye planos con medidas exactas, lista de materiales y proceso de fabricación paso a paso.</p>
+<div class="esv-sec"><div class="esv-sec-title">📐 Tipos de Portones Incluidos</div>
+<ul class="esv-list">
+<li><strong>Portón corredizo:</strong> el más solicitado — guía inferior, rueda galvanizada y opción de automatización</li>
+<li><strong>Portón batiente doble:</strong> 2 hojas con marco tubular, cierre en chapa o reja ornamental</li>
+<li><strong>Portón basculante:</strong> ideal para garajes — sube hacia arriba con contrapeso de resorte</li>
+<li><strong>Portón de reja:</strong> tubo cuadrado + barras verticales, muy pedido en condominios y comercios</li>
+<li><strong>Portón peatonal:</strong> misma técnica, tamaño reducido — siempre se vende junto al portón vehicular</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">📏 Medidas Más Pedidas</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Residencial simple</div><div class="esv-spec-val">2,40 × 1,80m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Residencial doble</div><div class="esv-spec-val">3,00 × 1,80m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Comercial ancho</div><div class="esv-spec-val">4,00 × 2,00m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Peatonal</div><div class="esv-spec-val">1,00 × 1,80m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo del marco</div><div class="esv-spec-val">40×40 / 50×50mm</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chapa de cierre</div><div class="esv-spec-val">Galv. calibre 18–20</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Materiales Principales</div>
+<ul class="esv-list">
+<li>Tubo cuadrado 40×40mm cal. 16 — marco estructural y refuerzos</li>
+<li>Tubo cuadrado 20×20mm cal. 18 — relleno ornamental y travesaños</li>
+<li>Chapa galvanizada o lisa 1,2mm — cierre del panel</li>
+<li>Bisagras de acero pesadas (3 por hoja mínimo)</li>
+<li>Rueda inferior + guía de piso (portón corredizo)</li>
+<li>Cremallera de acero + piñón para automatización opcional</li>
+<li>Electrodo 6013 Ø3,25mm o hilo MIG 0,8mm</li>
+<li>Primer anticorrosivo + esmalte sintético para acabado final</li>
+</ul></div>
+<div class="esv-tip">💰 <strong>Precio de venta sugerido:</strong> un portón corredizo residencial bien fabricado se vende por 3× a 5× el valor del material. El margen neto de un herrero bien organizado es del 40% al 60%. Quien cobra bien y entrega calidad, trabaja con lista de espera.</div>
+<div class="esv-note">📋 Los planos técnicos con medidas exactas están en el PDF original (en portugués). El material es visual — la mayoría de los esquemas se entiende sin texto.</div>
+</div>`,
+
+gaiola_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/reboque-gaiola.webp" alt="Remolque Tipo Jaula"></div>
+<p class="esv-intro">Proyecto completo de remolque tipo jaula — estructura reforçada en tubo cuadrado, con laterales abatibles y compuerta trasera. Ideal para transportar ganado, motocicletas, maquinaria y carga voluminosa.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones Técnicas</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Largo exterior</div><div class="esv-spec-val">2,10m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho exterior</div><div class="esv-spec-val">1,40m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Altura de la jaula</div><div class="esv-spec-val">0,80m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo del chassis</div><div class="esv-spec-val">50×50mm cal. 14</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Barras de la jaula</div><div class="esv-spec-val">Ø1" / 1¼"</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Eje (semiejes)</div><div class="esv-spec-val">Eje simple Ø50mm</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Lista de Materiales</div>
+<ul class="esv-list">
+<li>Tubo cuadrado 50×50mm cal. 14 — chassis y largueros principales</li>
+<li>Tubo cuadrado 30×30mm cal. 16 — travesaños del piso y laterales</li>
+<li>Barra redonda Ø1" o tubo redondo ¾" — rejas de la jaula</li>
+<li>Eje torsional + semiejes con brida (capacidad 1 tonelada)</li>
+<li>Neumáticos 185/70 R14 o equivalente + llantas</li>
+<li>Enganche estándar o pico de pato (según el vehículo)</li>
+<li>Kit de iluminación trasera (stop, posición, placa)</li>
+<li>Pernos M12 y M14 para uniones estructurales</li>
+<li>Bisagras pesadas para compuerta trasera abatible</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">⚡ Proceso de Fabricación</div>
+<div class="esv-steps">
+<div class="esv-step"><div class="esv-num">1</div><div>Cortar y soldar el chassis en tubo 50×50mm — verificar escuadra y nivelación</div></div>
+<div class="esv-step"><div class="esv-num">2</div><div>Instalar el eje en el centro de gravedad de la carga (aprox. 60% del largo)</div></div>
+<div class="esv-step"><div class="esv-num">3</div><div>Soldar los montantes verticales de la jaula cada 40cm aprox.</div></div>
+<div class="esv-step"><div class="esv-num">4</div><div>Instalar las barras horizontales de la jaula y la compuerta trasera con bisagras</div></div>
+<div class="esv-step"><div class="esv-num">5</div><div>Montar enganche, cadena de seguridad y kit eléctrico de iluminación</div></div>
+<div class="esv-step"><div class="esv-num">6</div><div>Lijar, aplicar primer antioxidante y pintar con esmalte o pintura PU</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>Oportunidad de negocio:</strong> el remolque tipo jaula tiene alta demanda en zonas rurales y urbanas. Con materiales bien comprados, el margen puede superar el 50%. Un remolque bien terminado se vende fácilmente por 3× el costo del material.</div>
+<div class="esv-note">📋 Los planos técnicos detallados con cotas exactas están en el PDF (en portugués). El proyecto es visual — los esquemas son claros independientemente del idioma.</div>
+</div>`,
+
+carretinhas_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/capa-carretinha-3600-01.jpg" alt="Remolque Flatdeck"></div>
+<p class="esv-intro">Proyecto completo del remolque tipo plataforma (flatdeck) 3,6 × 2,0m — el modelo más vendido para transporte de vehículos, maquinaria, materiales de construcción y carga pesada.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones Técnicas</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Largo de la plataforma</div><div class="esv-spec-val">3,60m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho útil</div><div class="esv-spec-val">2,00m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Capacidad de carga</div><div class="esv-spec-val">hasta 2.000kg</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chassis principal</div><div class="esv-spec-val">Viga U 100×50×5mm</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Largueros transversales</div><div class="esv-spec-val">Tubo 50×30mm cal.14</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tipo de eje</div><div class="esv-spec-val">Simple o tándem</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Materiales Principales</div>
+<ul class="esv-list">
+<li>Viga U (perfil C) 100×50×5mm — largueros principales del chassis</li>
+<li>Tubo rectangular 50×30mm cal. 14 — travesaños de la plataforma</li>
+<li>Chapa 3/16" o 1/4" — piso de la plataforma (opcional madera)</li>
+<li>Eje torsional 1.500kg o eje de bolas (depende de la carga)</li>
+<li>Neumáticos 185R14C reforzados (carga) + llantas de acero</li>
+<li>Enganche pico de pato o gooseneck según el vehículo tractor</li>
+<li>Cadena de seguridad y kit de iluminación homologado</li>
+<li>Puntos de amarre (argollas M16) soldados en la plataforma</li>
+</ul></div>
+<div class="esv-tip">💰 <strong>El remolque que más se vende:</strong> el flatdeck 3,6×2,0m es el modelo más solicitado en toda Latinoamérica. Cualquier persona con un vehículo 4×4 o camioneta quiere uno. El margen de ganancia es excelente — fabricar con tubo y viga es más barato que parece.</div>
+<div class="esv-note">📋 El plano técnico completo con todas las medidas y detalles de soldadura está en el PDF original (en portugués). Los esquemas técnicos son universales.</div>
+</div>`,
+
+barco_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/reboque-barco.webp" alt="Remolque para Bote"></div>
+<p class="esv-intro">Proyecto completo de remolque para bote — 7,00m × 2,20m. Estructura diseñada para transportar embarcaciones de hasta 600kg de manera segura, con guías laterales ajustables y rampa de lanzamiento.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones del Proyecto</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Largo total</div><div class="esv-spec-val">7,00m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho de la cuna</div><div class="esv-spec-val">2,20m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Capacidad</div><div class="esv-spec-val">hasta 600kg</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chassis</div><div class="esv-spec-val">Viga U 75×40×4mm</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Eje</div><div class="esv-spec-val">Torsional 750kg</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Acabado</div><div class="esv-spec-val">Epoxi marino</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Materiales y Accesorios</div>
+<ul class="esv-list">
+<li>Viga U 75×40×4mm — largueros principales y cola larga de lanzamiento</li>
+<li>Tubo cuadrado 40×40mm cal. 16 — cunas de apoyo y guías laterales</li>
+<li>Rodillos de PVC o goma — apoyo del casco sin dañar la embarcación</li>
+<li>Eje galvanizado o de acero inoxidable (resistente al agua marina)</li>
+<li>Neumáticos 175R13 + llantas galvanizadas o de aluminio</li>
+<li>Winche de arrastre con cable de acero Ø6mm y gancho</li>
+<li>Guías laterales ajustables con tornillo M16</li>
+<li>Pintura epoxi marina o galvanizado en caliente — esencial para uso en agua salada</li>
+</ul></div>
+<div class="esv-tip">💰 <strong>Mercado en crecimiento:</strong> el mercado de náutica crece cada año. Quien fabrica remolques para botes tiene poca competencia y cobra precios altos. Un remolque de 7m bien terminado vale 4× el costo del material sin problema.</div>
+<div class="esv-note">📋 Los planos técnicos con cotas de todos los componentes están en el PDF original (en portugués). Los esquemas son claros y detallados.</div>
+</div>`,
+
+jetski_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/reboque-jet-ski.webp" alt="Remolque para Jet Ski"></div>
+<p class="esv-intro">Proyecto completo de remolque para jet ski — 3,00m × 1,80m. Estructura compacta, liviana y resistente a la corrosión. El accesorio favorito de quienes tienen jet ski y necesitan moverse de una represa a otra.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Largo total</div><div class="esv-spec-val">3,00m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho de la cuna</div><div class="esv-spec-val">1,80m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Peso propio aprox.</div><div class="esv-spec-val">80–120kg</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chassis</div><div class="esv-spec-val">Tubo cuadrado 40×40 cal.16</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Eje</div><div class="esv-spec-val">Torsional 500kg</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ruedas</div><div class="esv-spec-val">165/70 R13</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Materiales</div>
+<ul class="esv-list">
+<li>Tubo cuadrado 40×40mm cal. 16 — estructura principal</li>
+<li>Tubo cuadrado 30×30mm cal. 18 — cunas de apoyo del casco</li>
+<li>Rodillos de PVC centrales y laterales (mínimo 4 unidades)</li>
+<li>Eje torsional 500kg galvanizado</li>
+<li>Neumáticos 165/70 R13 + llantas galvanizadas</li>
+<li>Winche de mano con 3m de cable y gancho de seguridad</li>
+<li>Pintura epoxi anticorrosiva (contacto con agua permanente)</li>
+<li>Kit de iluminación sumergible (stop, posición, placa)</li>
+</ul></div>
+<div class="esv-tip">💰 <strong>Producto de nicho con alta demanda:</strong> los dueños de jet ski pagan bien por un remolque de calidad. Pocas herrerías fabrican este tipo — quien lo hace tiene mercado exclusivo. El margen supera el 60% cuando hay demanda local.</div>
+<div class="esv-note">📋 Planos técnicos detallados en el PDF original (en portugués). Los esquemas son visuales e intuitivos.</div>
+</div>`,
+
+kart_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/kart-cross.webp" alt="Proyectos de Kart Cross"></div>
+<p class="esv-intro">Proyectos completos de Kart Cross — estructura tubular detallada, lista de materiales y proceso de fabricación. Copie el proyecto, fabrique el kart y venda. El negocio más rentable para herreros que quieren diferenciarse.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones del Kart Cross</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Largo total</div><div class="esv-spec-val">1,80m aprox.</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho</div><div class="esv-spec-val">1,20m aprox.</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo principal</div><div class="esv-spec-val">Redondo Ø1½" cal.14</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo secundario</div><div class="esv-spec-val">Redondo Ø1" cal.16</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Motor sugerido</div><div class="esv-spec-val">5,5 a 13HP</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Eje trasero</div><div class="esv-spec-val">Sólido Ø30mm</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Componentes y Materiales</div>
+<ul class="esv-list">
+<li>Tubo redondo Ø1½" cal. 14 — arco de seguridad, travesaño frontal y lateral</li>
+<li>Tubo redondo Ø1" cal. 16 — estructura secundaria y barras de refuerzo</li>
+<li>Chapa 3/16" — piso del chassis y soportes de motor</li>
+<li>Eje trasero sólido Ø30mm + chumaceras de bloque</li>
+<li>Ruedas ATV 18×9,5–8 traseras / 21×7–10 delanteras</li>
+<li>Dirección articulada tipo A-arm con bujes y rótulas</li>
+<li>Freno de disco trasero + mordaza hidráulica</li>
+<li>Motor a gasolina 5,5HP a 13HP (Honda, Briggs o similar)</li>
+<li>Cadena #35 o #40 + catarina motriz y conducida</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">⚡ Proceso de Fabricación</div>
+<div class="esv-steps">
+<div class="esv-step"><div class="esv-num">1</div><div>Cortar el tubo según el plano y doblar el arco de seguridad con dobladora de tubos</div></div>
+<div class="esv-step"><div class="esv-num">2</div><div>Soldar el chassis principal — verificar nivelación y ángulos con plantilla</div></div>
+<div class="esv-step"><div class="esv-num">3</div><div>Instalar soportes de motor, eje trasero y sistema de dirección</div></div>
+<div class="esv-step"><div class="esv-num">4</div><div>Montar suspensión delantera, ruedas y sistema de frenos</div></div>
+<div class="esv-step"><div class="esv-num">5</div><div>Instalar motor, cadena de transmisión y acelerador</div></div>
+<div class="esv-step"><div class="esv-num">6</div><div>Lijar, pintar y ajustar toda la mecánica antes de la prueba</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>El producto que más llama la atención:</strong> un Kart Cross expuesto en la herrería genera consultas todos los días. El valor de venta es 4× a 6× el costo del material. Quien fabrica karts tiene agenda llena y cobra lo que quiere.</div>
+<div class="esv-note">📋 Los planos técnicos completos con medidas de todos los componentes están en el PDF original (en portugués). Los esquemas estructurales son universales.</div>
+</div>`,
+
+mov_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/capa-moveis-metalon-01.jpg" alt="Muebles en Tubo Metálico"></div>
+<p class="esv-intro">Más de 80 proyectos listos de muebles industriales en tubo metálico 20×20 chapa 18. Estantes, repisas, bancadas, sillones, mesas y racks — todos con medidas y lista de materiales para fabricar y vender.</p>
+<div class="esv-sec"><div class="esv-sec-title">🪑 Tipos de Muebles Incluidos</div>
+<ul class="esv-list">
+<li><strong>Estantes y repisas industriales:</strong> para garajes, galpones, tiendas — los más vendidos</li>
+<li><strong>Bancadas de trabajo:</strong> con o sin cajones, simples o con prensa integrada</li>
+<li><strong>Mesas industriales:</strong> mesa de comedor, mesa para jardín y mesa de escritorio industrial</li>
+<li><strong>Percheros y colgadores:</strong> porta-bicicletas, colgadores de pared, porta-TV</li>
+<li><strong>Racks y soportes:</strong> para cocina, baño y organización de herramientas</li>
+<li><strong>Muebles decorativos:</strong> apliques de pared, lámparas, espejos con marco metálico</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">📏 Material Base</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo principal</div><div class="esv-spec-val">Metalon 20×20 cal.18</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo secundario</div><div class="esv-spec-val">Metalon 30×20 cal.18</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Soldadura</div><div class="esv-spec-val">MIG 0,8mm o TIG</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Acabado</div><div class="esv-spec-val">Pintura PU mate o barniz</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Complementos</div><div class="esv-spec-val">Madera, vidrio, mármol</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Corte</div><div class="esv-spec-val">Sierra de cinta o sierra ingletadora</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>El mueble industrial está de moda:</strong> el estilo industrial es tendencia en decoración. Un estante simple de metalon 20×20 puede venderse por 5× el valor del material. Quien vende muebles industriales atiende un mercado que paga bien y no negocia tanto el precio.</div>
+<div class="esv-note">📋 Los planos con medidas detalladas de cada mueble están en el PDF original (en portugués). Las medidas son numéricas — universales para cualquier idioma.</div>
+</div>`,
+
+ac_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/capa-academia-1.jpg" alt="Proyectos de Gimnasio"></div>
+<p class="esv-intro">Más de 100 proyectos de aparatos de gimnasio en hierro — leg press, press de banca, crossover, jaula de potencia y muchos más. Fabrique y venda los equipos más solicitados del mercado fitness.</p>
+<div class="esv-sec"><div class="esv-sec-title">🏋️ Equipos Incluidos en el Proyecto</div>
+<ul class="esv-list">
+<li><strong>Leg Press inclinado 45°:</strong> el más pedido por academias domésticas y comerciales</li>
+<li><strong>Banco de press (supino):</strong> banco plano, inclinado y declinado con soporte</li>
+<li><strong>Crossover / Cable:</strong> estructura doble torre con poleas y cables de acero</li>
+<li><strong>Jaula de potencia (Power Rack):</strong> estructura para sentadillas y press con seguros</li>
+<li><strong>Soporte de barras y mancuernas:</strong> organizadores y porta-pesas de todas las capacidades</li>
+<li><strong>Estación multifunción:</strong> dominadas, paralelas, soporte abdominal en una sola estructura</li>
+<li><strong>Aparatos de abdominales:</strong> banco romano, silla para abdominales, banco GHD</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">📏 Materiales Base</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo cuadrado principal</div><div class="esv-spec-val">50×50 / 60×60mm cal.14</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo cuadrado secundario</div><div class="esv-spec-val">40×40mm cal.16</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chapa del piso/asiento</div><div class="esv-spec-val">3/16" o 1/4"</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Polea y cable</div><div class="esv-spec-val">Nylon Ø80mm + cable Ø5mm</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Pernos de ajuste</div><div class="esv-spec-val">M10/M12 con tuerca borboleta</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Acolchado</div><div class="esv-spec-val">Espuma D-28 + cuero sintético</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>El mercado fitness no para de crecer:</strong> academias domésticas son tendencia post-pandemia. Un leg press de hierro bien fabricado se vende por 4× a 8× el valor del material. Herreros que fabrican equipos de gym tienen agenda llena todo el año.</div>
+<div class="esv-note">📋 Los planos técnicos con todas las medidas y detalles de soldadura están en el PDF original (en portugués). Las especificaciones numéricas son universales.</div>
+</div>`,
+
+galp_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/galpoes.webp" alt="Naves Metálicas"></div>
+<p class="esv-intro">Proyectos completos de naves y galpones metálicos — desde estructuras simples para granjas hasta naves industriales complejas. Incluye planos de la estructura, lista de materiales y proceso de montaje.</p>
+<div class="esv-sec"><div class="esv-sec-title">🏭 Modelos de Galpones Incluidos</div>
+<ul class="esv-list">
+<li><strong>Galpón de dos aguas simple:</strong> 6m × 12m — el modelo más fabricado en zonas rurales</li>
+<li><strong>Galpón de dos aguas con mezzanine:</strong> aprovechamiento del espacio vertical</li>
+<li><strong>Galpón de arco (shed):</strong> estructura circular sin columnas internas</li>
+<li><strong>Nave industrial con ventilación cenital:</strong> para talleres y fábricas</li>
+<li><strong>Cobertizo para vehículos:</strong> estructura liviana para proteger camiones y maquinaria</li>
+<li><strong>Invernadero metálico:</strong> estructura para cultivo protegido con cobertura de polietileno</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">📏 Estructura Tipo — Galpón 12×24m</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Columnas</div><div class="esv-spec-val">Perfil I o tubo Ø4"</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Vigas principales</div><div class="esv-spec-val">Viga celosía de ángulo</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Correas</div><div class="esv-spec-val">Perfil Z o C 100mm</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Espaciado de columnas</div><div class="esv-spec-val">4,00m a 6,00m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Inclinación del techo</div><div class="esv-spec-val">8% a 15%</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Cobertura</div><div class="esv-spec-val">Chapa trapezoidal ondulada</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>El servicio de mayor ticket del herrero:</strong> una nave metálica es el trabajo con el mayor valor en reales/dólares. El cliente paga por m² — quien fabrica galpones tiene contratos grandes y trabaja meses sin buscar clientes nuevos. El margen es del 35% al 50% sobre el costo total.</div>
+<div class="esv-note">📋 Planos técnicos detallados con todas las especificaciones están en el PDF original (en portugués). Los esquemas estructurales y medidas son universales.</div>
+</div>`,
+
+solda_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/mestre-solda.png" alt="Maestro de la Soldadura"></div>
+<p class="esv-intro">Guía completa de soldadura profesional — técnicas MIG, TIG y electrodo revestido. Del básico hasta el nivel avanzado, todo lo que necesita saber para dominar la soldadura y producir con calidad y velocidad.</p>
+<div class="esv-sec"><div class="esv-sec-title">🔥 Contenido del Material</div>
+<ul class="esv-list">
+<li><strong>Equipos de soldadura:</strong> diferencias entre MIG, TIG, electrodo y soldadura oxiacetilénica — cuándo usar cada uno</li>
+<li><strong>Parámetros de soldadura MIG:</strong> tensión, velocidad de alimentación del hilo y protección de gas para cada espesor</li>
+<li><strong>Técnica de electrodo:</strong> tipos de electrodo (6013, 7018, 6010), ángulo, velocidad y posición de soldeo</li>
+<li><strong>Posiciones de soldadura:</strong> plana (1G), horizontal (2G), vertical (3G) y sobre-cabeza (4G)</li>
+<li><strong>Defectos y cómo evitarlos:</strong> porosidad, fisuras, socavación, falta de fusión — causas y soluciones</li>
+<li><strong>Soldadura en acero inoxidable y aluminio:</strong> preparación, parámetros y técnica específica</li>
+<li><strong>Seguridad:</strong> EPIs obligatorios, ventilación, protección contra rayos UV y gases</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">⚡ Parámetros MIG por Espesor (referencia)</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Chapa 1,2mm</div><div class="esv-spec-val">70–90A / 17–18V</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chapa 2,0mm</div><div class="esv-spec-val">100–120A / 18–19V</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Tubo cal.16 (1,5mm)</div><div class="esv-spec-val">80–100A / 17–18V</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Chapa 4,75mm (3/16")</div><div class="esv-spec-val">150–170A / 20–21V</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Gas de protección</div><div class="esv-spec-val">CO₂ o Ar+CO₂ (75/25)</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Hilo MIG</div><div class="esv-spec-val">ER70S-6 Ø0,8mm</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>La soldadura perfecta vale más:</strong> un herrero que suelda limpio sin necesidad de amoladora para limpiar los cordones cobra un 30% más por el mismo trabajo. La calidad de la soldadura es lo primero que el cliente mira al inspeccionar una pieza.</div>
+<div class="esv-note">📋 El material completo está en el PDF original (en portugués). Las tablas de parámetros y los esquemas de posición de soldadura son visuales e internacionales.</div>
+</div>`,
+
+solda_p2:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/mestre-solda.png" alt="Maestro de la Soldadura"></div>
+<p class="esv-intro">Versión compacta de la guía de soldadura profesional — referencia rápida para los parámetros más usados en el día a día del herrero. Ideal para tener a mano en el taller.</p>
+<div class="esv-sec"><div class="esv-sec-title">🔥 Referencia Rápida — Electrodo Revestido</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Electrodo 6013 Ø2,5mm</div><div class="esv-spec-val">60–80A</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Electrodo 6013 Ø3,25mm</div><div class="esv-spec-val">90–130A</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Electrodo 7018 Ø3,25mm</div><div class="esv-spec-val">100–150A</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Polaridad 6013</div><div class="esv-spec-val">CC+ o CA</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Polaridad 7018</div><div class="esv-spec-val">CC+ (polaridad inversa)</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Velocidad de avance</div><div class="esv-spec-val">1× diámetro del electrodo/seg</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>Consejo práctico:</strong> el electrodo 6013 es para trabajos generales en acero al carbono. El 7018 es para estructuras que requieren mayor resistencia mecánica. Nunca use el electrodo húmedo — guárdelos en estufa de secado o lata cerrada.</div>
+<div class="esv-note">📋 Este es el material de referencia rápida. El contenido completo del curso está en el PDF principal (mestre-solda-novo.pdf).</div>
+</div>`,
+
+aco_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/tipos-aco.webp" alt="Tipos de Acero"></div>
+<p class="esv-intro">Guía completa de los principales tipos de acero y perfiles metálicos utilizados en herrería — características, aplicaciones y cómo elegir el material correcto para cada proyecto.</p>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Tipos de Acero más Usados en Herrería</div>
+<ul class="esv-list">
+<li><strong>Acero SAE 1020 (carbono bajo):</strong> el más común — fácil de soldar, doblar y mecanizar. Usado en la mayoría de los proyectos de herrería</li>
+<li><strong>Acero SAE 1045 (carbono medio):</strong> más resistente — ejes, pernos, piezas con desgaste. Requiere precalentamiento para soldar</li>
+<li><strong>Acero Inoxidable 304:</strong> resistente a la corrosión — rejas decorativas, equipos de alimentos, apliques externos</li>
+<li><strong>Acero Inoxidable 430:</strong> más económico que el 304, menos resistente a ácidos — decoración y utensilios domésticos</li>
+<li><strong>Hierro galvanizado:</strong> acero con recubrimiento de zinc — rejas de exterior, portones, estructuras expuestas a la lluvia</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">📐 Perfiles y Sus Aplicaciones</div>
+<ul class="esv-list">
+<li><strong>Tubo cuadrado (metalon):</strong> estructuras de muebles, marcos de portones, remolques — el perfil rey de la herrería</li>
+<li><strong>Tubo redondo:</strong> arcos de kart y roll-cage, barras ornamentales, rejas decorativas</li>
+<li><strong>Viga I o H:</strong> vigas de galpones, puentes, estructuras pesadas que necesitan rigidez</li>
+<li><strong>Perfil U (canal C):</strong> chassis de remolques, correas de techo, guías para portón corredizo</li>
+<li><strong>Ángulo (cantonera):</strong> refuerzos, marcos de rejas, armado de celosías para galpones</li>
+<li><strong>Barra redonda:</strong> ejes, pernos, barras de separación en rejas y portones</li>
+<li><strong>Chapa lisa:</strong> pisos de remolque, paneles de portones, puertas y cierres</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">📏 Calibres Más Usados</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Cal. 18 (1,2mm)</div><div class="esv-spec-val">Muebles y rejas livianas</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Cal. 16 (1,5mm)</div><div class="esv-spec-val">Portones y estructuras medias</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Cal. 14 (1,9mm)</div><div class="esv-spec-val">Remolques y estructuras pesadas</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">3/16" (4,75mm)</div><div class="esv-spec-val">Chassis de remolques y galpones</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">1/4" (6,35mm)</div><div class="esv-spec-val">Piezas de alta resistencia</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">3/8" (9,5mm)</div><div class="esv-spec-val">Estructuras industriales pesadas</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>Comprar bien es ganar en el material:</strong> conocer los tipos de acero le permite cotizar con el material correcto — ni más caro ni subdimensionado. Un herrero que sabe de materiales transmite confianza y cobra más sin que el cliente cuestione.</div>
+<div class="esv-note">📋 El material completo con ilustraciones de cada perfil está en el PDF original (en portugués). Los esquemas de corte transversal son universales.</div>
+</div>`,
+
+prec_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/capa-guia-precificacao-01.jpg" alt="Guía de Precios"></div>
+<p class="esv-intro">Guía completo de precificación para herreros — aprenda a calcular el costo real de cada trabajo, definir su margen de ganancia y cobrar el precio justo sin perder clientes ni trabajar de gratis.</p>
+<div class="esv-sec"><div class="esv-sec-title">📊 Cómo Calcular el Precio Correcto</div>
+<div class="esv-steps">
+<div class="esv-step"><div class="esv-num">1</div><div><strong>Costo del material:</strong> liste todos los materiales con precio unitario y cantidad exacta. Agregue un 10% de desperdicio.</div></div>
+<div class="esv-step"><div class="esv-num">2</div><div><strong>Mano de obra:</strong> calcule el tiempo de fabricación en horas × su valor hora. El valor hora mínimo = (gastos mensuales ÷ horas trabajadas).</div></div>
+<div class="esv-step"><div class="esv-num">3</div><div><strong>Gastos operativos:</strong> energía eléctrica, gas del equipo, consumibles (discos, electrodos, hilo, gas MIG) — aplique un 8%–12% sobre el costo del material.</div></div>
+<div class="esv-step"><div class="esv-num">4</div><div><strong>Flete e instalación:</strong> transporte + tiempo de instalación en el cliente. No incluya esto en la mano de obra de fabricación.</div></div>
+<div class="esv-step"><div class="esv-num">5</div><div><strong>Margen de ganancia:</strong> aplique un mínimo del 30% sobre el costo total. Para trabajos diferenciados, el margen puede llegar al 60%.</div></div>
+<div class="esv-step"><div class="esv-num">6</div><div><strong>Investigación de mercado:</strong> verifique el precio de la competencia. Si su precio es más bajo, puede cobrar más. Si es más alto, justifique con calidad.</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">📏 Fórmula de Precio Final</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Costo total</div><div class="esv-spec-val">Material + MO + Gastos + Flete</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Margen mínimo</div><div class="esv-spec-val">Costo × 1,30</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Margen ideal</div><div class="esv-spec-val">Costo × 1,50 a 1,80</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Precio de referencia</div><div class="esv-spec-val">Material × 3 a 5</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Descuento máximo</div><div class="esv-spec-val">10% (sin comprometer margen)</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Garantía del trabajo</div><div class="esv-spec-val">1 año mínimo — incluir en el precio</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>El herrero que no sabe precificar trabaja para el proveedor:</strong> la mayoría de los herreros pierden dinero porque no cuentan los gastos operativos ni el tiempo de entrega. Con este guía, usted va a descubrir que puede cobrar más — y el cliente va a seguir pagando.</div>
+<div class="esv-note">📋 Las planillas de cálculo y los ejemplos prácticos están en el PDF original (en portugués). Los números y las fórmulas son universales.</div>
+</div>`,
+
+dob_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/dobradora-chapas.webp" alt="Dobladora de Chapas"></div>
+<p class="esv-intro">Proyecto completo para construir su propia dobladora de chapas profesional — con ella podrá doblar chapas de hasta 3mm en ángulos precisos, ampliar sus servicios y ahorrar en tercerización.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones de la Dobladora</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho útil de doblado</div><div class="esv-spec-val">1,00m a 1,50m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Espesor máximo</div><div class="esv-spec-val">Chapa 3mm (3/16" = 4,75mm con mordaza reforzada)</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ángulo de doblado</div><div class="esv-spec-val">0° a 135°</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Vigas principales</div><div class="esv-spec-val">Viga I o H 100×50mm</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Mordaza superior</div><div class="esv-spec-val">Barra 50×50mm templada</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Accionamiento</div><div class="esv-spec-val">Manual con palanca de tubo</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Materiales para Construir la Dobladora</div>
+<ul class="esv-list">
+<li>Viga I o perfil H 100×50×5mm — cuerpo principal (mesa inferior)</li>
+<li>Barra cuadrada 50×50mm — mordaza superior de sujeción</li>
+<li>Barra plana 50×10mm — refuerzos y conectores laterales</li>
+<li>Chapa 1/4" — base y laterales del equipo</li>
+<li>Pernos M16 con tuerca y arandela — sistema de ajuste de la mordaza</li>
+<li>Bisagras de piano o pasadores Ø20mm — eje de rotación del brazo</li>
+<li>Tubo redondo 2" — palanca de accionamiento manual</li>
+<li>Ruedas con traba — para mover la dobladora por el taller</li>
+</ul></div>
+<div class="esv-tip">💰 <strong>La herramienta que se paga sola en el primer trabajo:</strong> una dobladora profesional nueva cuesta mucho. Fabricar la suya con este proyecto cuesta una fracción del precio. Además, podrá doblar chapas para terceros — un servicio muy solicitado y poco ofrecido en la mayoría de las ciudades.</div>
+<div class="esv-note">📋 Los planos técnicos completos con todas las medidas están en el PDF original (en portugués). Los esquemas de construcción son claros e intuitivos.</div>
+</div>`,
+
+car_p1:`<div class="esv">
+<div class="esv-cover"><img src="assets/images/carrinho-chapas.webp" alt="Carrito Transportador"></div>
+<p class="esv-intro">Proyecto completo del carrito industrial para transporte de chapas metálicas — una herramienta esencial en cualquier taller que trabaje con chapas de gran tamaño y peso.</p>
+<div class="esv-sec"><div class="esv-sec-title">📏 Especificaciones del Carrito</div>
+<div class="esv-grid">
+<div class="esv-spec"><div class="esv-spec-lbl">Largo del carro</div><div class="esv-spec-val">1,20m a 1,50m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ancho</div><div class="esv-spec-val">0,60m a 0,80m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Capacidad de carga</div><div class="esv-spec-val">hasta 500kg</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Altura de carga</div><div class="esv-spec-val">0,90m a 1,10m</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Estructura</div><div class="esv-spec-val">Tubo cuadrado 40×40mm cal.14</div></div>
+<div class="esv-spec"><div class="esv-spec-lbl">Ruedas</div><div class="esv-spec-val">Industriales Ø150mm con traba</div></div>
+</div></div>
+<div class="esv-sec"><div class="esv-sec-title">🔩 Lista de Materiales</div>
+<ul class="esv-list">
+<li>Tubo cuadrado 40×40mm cal. 14 — estructura principal y soportes verticales</li>
+<li>Tubo cuadrado 25×25mm cal. 16 — travesaños y refuerzos</li>
+<li>Chapa 3/16" — plataforma base del carro</li>
+<li>4 ruedas industriales Ø150mm con rodamiento (2 fijas + 2 giratorias con traba)</li>
+<li>Pernos M10 y M12 — fijación de las ruedas y manija</li>
+<li>Tubo redondo 1½" — manija ergonómica de empuje</li>
+<li>Pintura epoxi anticorrosiva — base + acabado</li>
+</ul></div>
+<div class="esv-sec"><div class="esv-sec-title">⚡ Pasos de Fabricación</div>
+<div class="esv-steps">
+<div class="esv-step"><div class="esv-num">1</div><div>Cortar el tubo según las medidas del plano y preparar los extremos para soldadura</div></div>
+<div class="esv-step"><div class="esv-num">2</div><div>Soldar el bastidor inferior — verificar cuadratura y planitud con regla</div></div>
+<div class="esv-step"><div class="esv-num">3</div><div>Soldar los montantes verticales y la plataforma de carga en chapa 3/16"</div></div>
+<div class="esv-step"><div class="esv-num">4</div><div>Instalar las 4 ruedas industriales con pernos y verificar el desplazamiento</div></div>
+<div class="esv-step"><div class="esv-num">5</div><div>Soldar la manija ergonómica y los soportes laterales de retención de chapas</div></div>
+<div class="esv-step"><div class="esv-num">6</div><div>Lijar, aplicar primer y pintar — entregar el carrito listo para uso</div></div>
+</div></div>
+<div class="esv-tip">💰 <strong>Fabrique para usar o para vender:</strong> el carrito transportador es útil en cualquier taller y también tiene mercado de venta. Metalúrgicas, aserraderos, depósitos de materiales — cualquier empresa que mueva material pesado es un cliente potencial.</div>
+<div class="esv-note">📋 Los planos técnicos con todas las medidas exactas están en el PDF original (en portugués). Los esquemas son claros para cualquier herrero.</div>
+</div>`
+};
+
+function openModal(id) {
+  const p = PRODUCTS[id];
+  if (!p) return;
+  const l = lang.current;
+  const t = i18n[l];
+  const dLabels = DRIVE_LABELS[l];
+  const pLabels = PDF_LABELS[l];
+  const rl = READ_LABELS[l];
+
+  const badge = document.getElementById('modalBadge');
+  badge.textContent = t[p.badge] || '';
+  badge.className = 'badge ' + getBadgeClass(p.badge);
+
+  document.getElementById('modalTitle').textContent = t[p.title] || '';
+  document.getElementById('modalDesc').textContent = t[p.desc] || '';
+
+  const img = document.getElementById('modalImg');
+  const hdr = document.getElementById('modalHeader');
+  if (p.img) {
+    img.src = p.img; img.style.display = '';
+    hdr.style.minHeight = '180px';
+  } else {
+    img.src = 'assets/images/capa-kit-projetos.webp';
+    img.style.display = '';
+    hdr.style.minHeight = '120px';
+  }
+
+  // DRIVES
+  const dv = document.getElementById('modalDrives');
+  if (p.drives.length) {
+    let html = `<p class="modal-section-title">${t.lbl_drives}</p><div class="link-list">`;
+    p.drives.forEach(d => {
+      const label = dLabels[d.key] || d.key;
+      html += `<div class="link-item">
+        <span class="link-item-label">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+          ${label}
+        </span>
+        <a href="${d.url}" target="_blank" rel="noopener">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+          ${t.btn_open}
+        </a>
+      </div>`;
+    });
+    html += '</div>';
+    dv.innerHTML = html;
+  } else {
+    dv.innerHTML = '';
+  }
+
+  // PDFs — leitura inline + download
+  const pv = document.getElementById('modalPdfs');
+  if (p.pdfs.length) {
+    let html = `<p class="modal-section-title">${t.lbl_pdfs}</p>`;
+    p.pdfs.forEach((pdf, i) => {
+      const label = pLabels[pdf.key] || pdf.key;
+      const uid = `pdfframe_${i}`;
+      const readBtn = l === 'es'
+        ? `<button class="btn-pdf-read" onclick="window.open('viewer-es.html?m=${pdf.key}&f=${encodeURIComponent(pdf.file)}','_blank')">${rl.open}</button>`
+        : `<button class="btn-pdf-read" onclick="togglePdf(this,'${uid}','${pdf.file}','${pdf.key}')">${rl.open}</button>`;
+      html += `
+      <div class="link-item" style="flex-direction:column;align-items:stretch;gap:10px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap">
+          <span class="link-item-label">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            ${label}
+          </span>
+          <div class="pdf-actions">
+            ${readBtn}
+            <a href="${pdf.file}" download style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:7px 12px;border-radius:6px;background:var(--gold);color:#000;text-decoration:none">
+              <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              ${t.btn_download}
+            </a>
+          </div>
+        </div>
+        ${l !== 'es' ? `<div class="pdf-frame-wrap" id="${uid}"><iframe src="" loading="lazy" allowfullscreen></iframe></div>` : ''}
+      </div>`;
+    });
+    pv.innerHTML = html;
+  } else {
+    pv.innerHTML = '';
+  }
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function togglePdf(btn, uid, file, pdfKey) {
+  const wrap = document.getElementById(uid);
+  const isOpen = wrap.style.display === 'block';
+  const l = lang.current;
+  const rl = READ_LABELS[l] || READ_LABELS.pt;
+  if (isOpen) {
+    wrap.style.display = 'none';
+    btn.textContent = rl.open;
+    btn.classList.remove('open');
+  } else {
+    const iframe = wrap.querySelector('iframe');
+    if (iframe && (!iframe.src || iframe.src === window.location.href)) iframe.src = file;
+    wrap.style.display = 'block';
+    btn.textContent = rl.close;
+    btn.classList.add('open');
+    setTimeout(() => wrap.scrollIntoView({behavior:'smooth', block:'start'}), 100);
+  }
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('overlay')) return;
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  // Reset all open pdf viewers
+  document.querySelectorAll('.pdf-frame-wrap').forEach(w => w.style.display = 'none');
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('overlay')) return;
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function getBadgeClass(key) {
+  if (key === 'badge_mainkit' || key === 'badge_projects') return 'bg-gold';
+  if (key === 'badge_course') return 'bg-green';
+  if (key === 'badge_tool') return 'bg-purple';
+  if (key === 'badge_guide') return 'bg-blue';
+  if (key === 'badge_bonus') return 'bg-green';
+  return 'bg-gold';
+}
+
+/* ── i18n ────────────────────────────────────────────────── */
+function setLang(l) {
+  lang.current = l;
+  localStorage.setItem('mds_lang', l);
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent === l.toUpperCase());
+  });
+  const t = i18n[l];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (t[k] !== undefined) el.textContent = t[k];
+  });
+}
+
+/* ── INIT ────────────────────────────────────────────────── */
+setLang(lang.current);
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
