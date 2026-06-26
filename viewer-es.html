@@ -161,9 +161,13 @@ body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;font
 const params = new URLSearchParams(location.search);
 const KEY = params.get('m') || '';
 const PDF_FILE = params.get('f') || '';
+const DRIVE_LINK = 'https://drive.google.com/drive/folders/1-oeIO20RVXqVDX81JaZrWsp3P5fVM-dk?usp=sharing';
 
-// inject PDF download link
-document.getElementById('btnPdfDownload').href = PDF_FILE;
+// inject PDF download link (sidebar)
+const btnPdf = document.getElementById('btnPdfDownload');
+btnPdf.href = DRIVE_LINK;
+btnPdf.removeAttribute('download');
+btnPdf.target = '_blank';
 
 // TOC builder
 function buildToc(sections){
@@ -404,9 +408,9 @@ if(!mat){
       <h3>📄 Acceda al Proyecto Técnico Completo</h3>
       <p>Este material en español es una <strong>guía de referencia completa</strong>. El PDF original (en portugués) contiene los <strong>planos técnicos detallados</strong> con todas las cotas, esquemas de soldadura y cortes necesarios para fabricar el proyecto.</p>
       <div class="pdf-btns">
-        <a href="${mat.pdfFile || PDF_FILE}" download class="pdf-btn-main">
+        <a href="${DRIVE_LINK}" target="_blank" class="pdf-btn-main">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Descargar PDF con Planos Técnicos
+          Acceder a los PDFs en Drive
         </a>
         <button onclick="window.close()" class="pdf-btn-sec">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
