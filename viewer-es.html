@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mestre da Serralheria â Material en EspaÃ±ol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--bg2:#141414;--bg3:#1a1a1a;--bg4:#202020;
+  --gold:#d4a74b;--gold2:#f0c060;
+  --white:#f5f5f5;--gray:#aaa;--gray2:#666;
+  --border:#2a2a2a;--border2:#333;
+  --green:#22c55e;--red:#ef4444;--blue:#60a5fa;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+
+/* ── LAYOUT ── */
+.page-wrap{display:grid;grid-template-columns:260px 1fr;min-height:100vh;max-width:1400px;margin:0 auto}
+@media(max-width:860px){.page-wrap{grid-template-columns:1fr}.sidebar{display:none}}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--bg2);border-right:1px solid var(--border);padding:28px 20px;display:flex;flex-direction:column;gap:6px}
+.sidebar-brand{font-family:'Bebas Neue',cursive;font-size:18px;color:var(--gold);letter-spacing:2px;margin-bottom:16px;line-height:1.1}
+.sidebar-brand span{display:block;font-size:11px;color:var(--gray2);font-family:'Inter',sans-serif;letter-spacing:1px;font-weight:600;text-transform:uppercase}
+.toc-title{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gray2);text-transform:uppercase;margin:12px 0 6px}
+.toc-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;color:var(--gray);font-size:13px;text-decoration:none;transition:.15s;cursor:pointer;border:none;background:none;width:100%;text-align:left}
+.toc-item:hover,.toc-item.active{background:rgba(212,167,75,.1);color:var(--gold)}
+.toc-item svg{width:14px;height:14px;flex-shrink:0;opacity:.6}
+.sidebar-pdf{margin-top:auto;padding-top:20px;border-top:1px solid var(--border)}
+.btn-pdf-access{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#000;font-size:12px;font-weight:800;letter-spacing:.8px;padding:12px;border-radius:8px;text-decoration:none;text-transform:uppercase;transition:.2s;border:none;cursor:pointer;width:100%}
+.btn-pdf-access:hover{background:var(--gold2)}
+.btn-back{display:flex;align-items:center;gap:6px;color:var(--gray2);font-size:12px;font-weight:600;text-decoration:none;padding:8px 10px;border-radius:6px;transition:.15s;margin-bottom:8px;background:none;border:none;cursor:pointer;width:100%}
+.btn-back:hover{color:var(--white)}
+
+/* ── MAIN ── */
+.main{padding:0 0 80px}
+.hero{position:relative;width:100%;overflow:hidden;max-height:360px;background:var(--bg3)}
+.hero img{width:100%;max-height:360px;object-fit:cover;display:block;opacity:.85}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(0,0,0,.85) 40%, rgba(0,0,0,.3) 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:40px 48px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#000;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:5px 12px;border-radius:4px;text-transform:uppercase;margin-bottom:12px;width:fit-content}
+.hero-title{font-family:'Bebas Neue',cursive;font-size:clamp(28px,4vw,52px);color:var(--white);letter-spacing:2px;line-height:1.05;max-width:700px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);margin-top:10px;max-width:560px;line-height:1.6}
+@media(max-width:600px){.hero-content{padding:24px 20px}.hero-title{font-size:26px}}
+
+/* ── CONTENT ── */
+.content{padding:48px 48px 0}
+@media(max-width:600px){.content{padding:28px 20px 0}}
+
+.section{margin-bottom:48px;scroll-margin-top:24px}
+.sec-label{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.sec-label .icon{width:36px;height:36px;background:rgba(212,167,75,.12);border:1px solid rgba(212,167,75,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.sec-label h2{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px;color:var(--gold)}
+
+.intro-box{background:var(--bg3);border:1px solid var(--border2);border-left:4px solid var(--gold);border-radius:8px;padding:24px 28px;font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:40px}
+.intro-box strong{color:var(--white)}
+
+/* cards de especificações */
+.spec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:32px}
+.spec-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.spec-card .lbl{font-size:10px;color:var(--gray2);text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+.spec-card .val{font-size:16px;font-weight:700;color:var(--white)}
+.spec-card .sub{font-size:11px;color:var(--gray2)}
+
+/* listas */
+.content-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.content-list li{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--gray);padding:14px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;line-height:1.6}
+.content-list li .li-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.content-list li strong{color:var(--white)}
+.content-list li .detail{margin-top:4px;font-size:13px;color:var(--gray2)}
+
+/* passos */
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{min-width:36px;height:36px;background:var(--gold);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.step-body h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}
+.step-body p{font-size:13px;color:var(--gray);line-height:1.6}
+.step-body .tip{margin-top:8px;font-size:12px;color:var(--gold);background:rgba(212,167,75,.08);padding:6px 10px;border-radius:4px;border-left:2px solid var(--gold)}
+
+/* highlight box */
+.highlight{background:rgba(212,167,75,.07);border:1px solid rgba(212,167,75,.25);border-radius:10px;padding:24px 28px;margin-bottom:32px}
+.highlight .hl-title{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:1.5px;color:var(--gold);margin-bottom:10px}
+.highlight p{font-size:14px;color:var(--gray);line-height:1.7}
+.highlight strong{color:var(--white)}
+.highlight ul{margin-top:12px;display:flex;flex-direction:column;gap:6px;list-style:none}
+.highlight ul li{font-size:13px;color:var(--gray);padding-left:16px;position:relative}
+.highlight ul li::before{content:"›";position:absolute;left:0;color:var(--gold)}
+
+/* warning */
+.warning{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:16px 20px;margin-bottom:24px;font-size:13px;color:#fca5a5;line-height:1.6}
+.warning strong{color:var(--red)}
+
+/* tip verde */
+.tip-box{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:8px;padding:16px 20px;margin-bottom:24px;font-size:13px;color:#86efac;line-height:1.6}
+.tip-box strong{color:var(--green)}
+
+/* tabela */
+.data-table{width:100%;border-collapse:collapse;margin-bottom:24px}
+.data-table th{background:var(--bg3);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border2)}
+.data-table td{padding:10px 14px;font-size:13px;color:var(--gray);border-bottom:1px solid var(--border)}
+.data-table tr:hover td{background:var(--bg3);color:var(--white)}
+.data-table td strong{color:var(--white)}
+
+/* divisor */
+.divider{height:1px;background:var(--border);margin:40px 0}
+
+/* pdf access section */
+.pdf-access-section{background:var(--bg3);border:1px solid var(--border2);border-radius:12px;padding:32px;margin:48px 48px 0}
+@media(max-width:600px){.pdf-access-section{margin:32px 20px 0}}
+.pdf-access-section h3{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px;color:var(--white);margin-bottom:8px}
+.pdf-access-section p{font-size:14px;color:var(--gray);margin-bottom:20px;line-height:1.7}
+.pdf-btns{display:flex;gap:12px;flex-wrap:wrap}
+.pdf-btn-main{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#000;font-size:13px;font-weight:800;padding:14px 24px;border-radius:8px;text-decoration:none;letter-spacing:.5px;transition:.2s}
+.pdf-btn-main:hover{background:var(--gold2)}
+.pdf-btn-sec{display:inline-flex;align-items:center;gap:8px;background:var(--bg4);color:var(--white);font-size:13px;font-weight:600;padding:14px 24px;border-radius:8px;text-decoration:none;border:1px solid var(--border2);transition:.2s}
+.pdf-btn-sec:hover{border-color:var(--gold);color:var(--gold)}
+
+/* footer */
+.viewer-footer{text-align:center;padding:40px 20px;color:var(--gray2);font-size:12px;border-top:1px solid var(--border);margin-top:60px}
+.viewer-footer strong{color:var(--gold)}
+
+/* scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div>
+      <button class="btn-back" onclick="window.close()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+        Volver al área de miembros
+      </button>
+      <div class="sidebar-brand">MESTRE DA<span>SERRALHERIA</span></div>
+      <div id="sidebarToc"></div>
+    </div>
+    <div class="sidebar-pdf">
+      <div style="font-size:11px;color:var(--gray2);margin-bottom:10px;line-height:1.5">📄 Acceda al PDF original (en portugués) con todos los planos técnicos:</div>
+      <a id="btnPdfDownload" href="#" download class="btn-pdf-access">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Descargar PDF Original
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="mainContent">
+    <!-- injected by JS -->
+  </main>
+</div>
+
+<script>
+const params = new URLSearchParams(location.search);
+const KEY = params.get('m') || '';
+const PDF_FILE = params.get('f') || '';
+
+// inject PDF download link
+document.getElementById('btnPdfDownload').href = PDF_FILE;
+
+// TOC builder
+function buildToc(sections){
+  const el = document.getElementById('sidebarToc');
+  el.innerHTML = '<div class="toc-title">Contenido</div>' +
+    sections.map(s=>`<button class="toc-item" onclick="document.getElementById('${s.id}').scrollIntoView({behavior:'smooth'})">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="9" cy="9" r="2"/><path d="M13 9h6M13 15h6M3 15h6"/></svg>
+      ${s.label}
+    </button>`).join('');
+}
+
+// ── CONTENIDOS ────────────────────────────────────────────────
+const MATERIALS = {
+
+portoes_p1:{
+  img:'portoes.webp',
+  badge:'PROYECTOS DE HERRERÍA',
+  title:'Proyecto de Portones con Medidas y Materiales',
+  sub:'Todo lo que necesita saber para fabricar, instalar y vender portones profesionales — desde el residencial hasta el industrial.',
+  pdfFile: PDF_FILE || 'portoes.pdf',
+  toc:[
+    {id:'s1',label:'Tipos de Portones'},
+    {id:'s2',label:'Medidas Estándar'},
+    {id:'s3',label:'Materiales Completos'},
+    {id:'s4',label:'Herramientas Necesarias'},
+    {id:'s5',label:'Fabricación Paso a Paso'},
+    {id:'s6',label:'Soldadura y Acabado'},
+    {id:'s7',label:'Instalación'},
+    {id:'s8',label:'Errores Comunes'},
+    {id:'s9',label:'Precios y Negocio'},
+  ],
+  html:`
+  <div class="intro-box"><strong>Este material lo guiará</strong> por todo el proceso de fabricación de portones metálicos — desde la elección del tipo correcto para cada cliente hasta la instalación final y el precio de venta. Siga las instrucciones, use los planos del PDF original para las cotas exactas, y tendrá un producto de alta calidad que justifica un precio premium.</div>
+
+  <div class="section" id="s1">
+    <div class="sec-label"><div class="icon">🚪</div><h2>Tipos de Portones</h2></div>
+    <ul class="content-list">
+      <li><span class="li-icon">🔄</span><div><strong>Portón Corredizo (deslizante)</strong><br>El más solicitado en residencias y condominios. Se desliza lateralmente por una guía inferior de acero galvanizado. Puede automatizarse con motor tubular (recomendado). Ideal para terrenos con poco espacio de apertura frontal.<div class="detail">Peso del portón: entre 80 y 200kg según tamaño. Requiere guía de piso, rodamiento de altura y tope final.</div></div></li>
+      <li><span class="li-icon">🚪</span><div><strong>Portón Batiente (abatible)</strong><br>Abre hacia afuera o hacia adentro, en 1 o 2 hojas. La hoja simple (1 hoja) es más económica. La doble (2 hojas) es la más usada en residencias con garaje amplio. Requiere bisagras pesadas de 3" o más.<div class="detail">Longitud de hoja: máx. 1,50m por hoja para no requerir refuerzo de apoyo inferior.</div></div></li>
+      <li><span class="li-icon">⬆️</span><div><strong>Portón Basculante</strong><br>Sube verticalmente hacia el interior del garaje. El mecanismo es de contrapeso o resorte helicoidal. Muy común en garajes de departamentos y casas antiguas. Exige techo mínimo de 2,70m para abrir completamente.<div class="detail">Fabricar en 1 pieza. Usar tubo 50×50mm para el marco y chapa 1,2mm para el panel.</div></div></li>
+      <li><span class="li-icon">🏛️</span><div><strong>Portón de Reja Ornamental</strong><br>Marco en tubo cuadrado con relleno de barras redondas verticales, cuadradas o con ornamentos. Muy pedido en condominos, comercios y mansiones. El precio es más alto por la mano de obra ornamental.<div class="detail">Barras verticales: separación entre 8cm y 12cm para seguridad. Barras Ø3/4" son las más usadas.</div></div></li>
+      <li><span class="li-icon">🚶</span><div><strong>Portón Peatonal</strong><br>Portón de paso para personas, siempre complementario al portón vehicular. Fabricar con el mismo material y estilo para crear un conjunto visual armonioso. Tamaño estándar: 1,00m × 2,00m.<div class="detail">Cotizar siempre en conjunto con el portón vehicular — aumenta el ticket médio sin esfuerzo adicional.</div></div></li>
+      <li><span class="li-icon">🏭</span><div><strong>Portón Industrial (pivotante)</strong><br>Portones de gran porte para galpones, depósitos e industrias. Giran en un punto central (pivô). Pueden tener 4m, 6m o más de ancho. Requieren calculo estructural para los pilares de apoyo.<div class="detail">Tubo mínimo 80×80mm cal.12 para el marco. Eje de pivô en barra redonda 2" templada.</div></div></li>
+    </ul>
+  </div>
+
+  <div class="section" id="s2">
+    <div class="sec-label"><div class="icon">📐</div><h2>Medidas Estándar</h2></div>
+    <table class="data-table">
+      <thead><tr><th>Tipo</th><th>Ancho</th><th>Alto</th><th>Uso Recomendado</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Corredizo simple</strong></td><td>2,40m – 3,00m</td><td>1,60m – 1,80m</td><td>Residencial – vehículo compacto</td></tr>
+        <tr><td><strong>Corredizo grande</strong></td><td>3,50m – 4,50m</td><td>1,80m – 2,00m</td><td>Residencial – SUV / camioneta</td></tr>
+        <tr><td><strong>Batiente doble</strong></td><td>2,40m – 3,20m</td><td>1,80m – 2,10m</td><td>Residencial con espacio frontal</td></tr>
+        <tr><td><strong>Industrial corredizo</strong></td><td>4,00m – 8,00m</td><td>2,50m – 4,00m</td><td>Galpones, depósitos, fábricas</td></tr>
+        <tr><td><strong>Peatonal</strong></td><td>0,80m – 1,00m</td><td>1,80m – 2,10m</td><td>Paso de personas – siempre en conjunto</td></tr>
+        <tr><td><strong>Basculante</strong></td><td>2,40m – 3,00m</td><td>2,00m – 2,40m</td><td>Garajes con techo alto</td></tr>
+      </tbody>
+    </table>
+    <div class="tip-box"><strong>Consejo profesional:</strong> siempre tome las medidas in-situ antes de cortar cualquier material. Las aperturas rara vez tienen las medidas exactas que el cliente dice. Deje 20mm de holgura a cada lado para ajuste e instalación.</div>
+  </div>
+
+  <div class="section" id="s3">
+    <div class="sec-label"><div class="icon">📦</div><h2>Lista de Materiales Completa</h2></div>
+    <ul class="content-list">
+      <li><span class="li-icon">📦</span><div><strong>Tubo cuadrado 40×40mm cal.16</strong> — Marco estructural, travesaños y refuerzos.<div class="detail">Calcule: perímetro del portón × 1,2 (factor de desperdicio). Para un portón 3,0×1,8m: aprox. 18m lineales.</div></div></li>
+      <li><span class="li-icon">📦</span><div><strong>Tubo cuadrado 50×50mm cal.14</strong> — Portones industriales y de gran porte.<div class="detail">Usar cuando el ancho supera 4m o el peso del panel excede 150kg.</div></div></li>
+      <li><span class="li-icon">📦</span><div><strong>Tubo cuadrado 20×20mm cal.18</strong> — Travesaños intermedios y relleno ornamental.<div class="detail">Espaciado máximo entre travesaños: 40cm para mantener la rigidez del panel.</div></div></li>
+      <li><span class="li-icon">📦</span><div><strong>Chapa galvanizada 1,2mm (cal.18)</strong> — Panel de cierre liso o con relieve.<div class="detail">Calcule el área del panel + 5% de margen. Viene en chapas de 1,22×2,44m (plancha estándar).</div></div></li>
+      <li><span class="li-icon">🔧</span><div><strong>Bisagras de portón pesadas (3" a 4")</strong> — Mínimo 3 bisagras por hoja de hasta 100kg.<div class="detail">Para portones pesados (>120kg), use 4 bisagras. Bisagras de pletina son más resistentes que las estampadas.</div></div></li>
+      <li><span class="li-icon">🔧</span><div><strong>Conjunto guía inferior + rodamiento</strong> — Solo portones corredizos.<div class="detail">Guía de perfil U 50×30mm soldada al piso. Rodamiento en nylon o acero galvanizado.</div></div></li>
+      <li><span class="li-icon">🔧</span><div><strong>Rodamiento superior (guía de tope)</strong> — Estabilizador del portón corredizo en la parte alta.<div class="detail">Se instala en el pilar de la entrada. Tipo rodillo doble para portones pesados.</div></div></li>
+      <li><span class="li-icon">🔧</span><div><strong>Cerradura y pasador</strong> — Pasador de media hoja (portones batientes) o cerradura embutida.<div class="detail">Para portones corredizos: pasador de suelo + cerrojo lateral. No ahorre en cerraduras — el cliente nota la calidad.</div></div></li>
+      <li><span class="li-icon">🎨</span><div><strong>Primer anticorrosivo + Esmalte sintético</strong> — Acabado final protector.<div class="detail">1L de primer cubre aprox. 10m² a mano. 1L de esmalte cubre 12m² con rodillo de espuma.</div></div></li>
+      <li><span class="li-icon">⚡</span><div><strong>Electrodo 6013 Ø3,25mm o Hilo MIG 0,8mm</strong> — Para la soldadura de todos los componentes.<div class="detail">Un portón 3×1,8m consume aprox. 0,5kg de hilo MIG o 1 caja de electrodos 6013.</div></div></li>
+    </ul>
+  </div>
+
+  <div class="section" id="s4">
+    <div class="sec-label"><div class="icon">🛠️</div><h2>Herramientas Necesarias</h2></div>
+    <div class="spec-grid">
+      <div class="spec-card"><div class="lbl">Corte</div><div class="val">Sierra de cinta</div><div class="sub">o cortadora de disco 14"</div></div>
+      <div class="spec-card"><div class="lbl">Soldadura</div><div class="val">Soldadora MIG</div><div class="sub">mín. 130A – o electrodo</div></div>
+      <div class="spec-card"><div class="lbl">Verificación</div><div class="val">Escuadra de acero</div><div class="sub">600mm mín. – imprescindible</div></div>
+      <div class="spec-card"><div class="lbl">Nivel</div><div class="val">Nivel de burbuja</div><div class="sub">1,20m para alineación</div></div>
+      <div class="spec-card"><div class="lbl">Desbaste</div><div class="val">Amoladora 4½"</div><div class="sub">disco de desbaste + flap</div></div>
+      <div class="spec-card"><div class="lbl">Pintura</div><div class="val">Compresor + pistola</div><div class="sub">o rodillo de espuma fina</div></div>
+      <div class="spec-card"><div class="lbl">Medición</div><div class="val">Cinta métrica 5m</div><div class="sub">y regla de 1m</div></div>
+      <div class="spec-card"><div class="lbl">Fijación</div><div class="val">Sargentos / prensas</div><div class="sub">mín. 4 unidades</div></div>
+    </div>
+    <div class="tip-box"><strong>Inversión en herramientas:</strong> la soldadora MIG es la herramienta más importante. Una buena soldadora de 150A–200A produce soldaduras limpias que no necesitan tanto acabado con amoladora, lo que ahorra tiempo y mejora la presentación.</div>
+  </div>
+
+  <div class="section" id="s5">
+    <div class="sec-label"><div class="icon">⚡</div><h2>Fabricación Paso a Paso</h2></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Relevamiento y diseño</h4><p>Mida la apertura in-situ. Anote: ancho libre, alto libre, tipo de piso, dirección de apertura y tipo de pilar existente. Defina el modelo con el cliente y elabore un croquis con las medidas del portón a fabricar (descontando holguras de instalación).</p><div class="tip">Descuento estándar: 20mm por lado en portones corredizos, 15mm en batientes.</div></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Corte del material</h4><p>Con las medidas definidas, corte el tubo del marco con sierra de cinta o cortadora angular. Para uniones en ángulo de 90°, corte recto y use un cuadrado de acero para verificar perpendicularidad. Limpie las rebabas con lima o amoladora.</p><div class="tip">Numere cada pieza con marcador permanente para no confundir durante el armado.</div></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Armado del marco perimetral</h4><p>Coloque las piezas del marco sobre una superficie plana (mesa de trabajo o piso plano). Use sargentos para fijar. Verifique la diagonal: si las 2 diagonales son iguales, el marco es perfectamente cuadrado. Puntee (punto de soldadura) cada esquina sin soldar completamente todavía.</p><div class="tip">La cuadratura es crítica. Un portón torcido no deslizará bien y el cliente lo notará de inmediato.</div></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Instalación de travesaños</h4><p>Marque y corte los travesaños horizontales intermedios. La separación máxima recomendada es 40cm para rigidez. Suelde los travesaños al marco verificando que estén nivelados. Para portones con chapa, instale también travesaños verticales cada 60cm.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Soldadura completa del marco</h4><p>Una vez verificada la cuadratura, suelde completamente todas las uniones. Alterne los lados para evitar deformación por calor. Suelde primero los cordones cortos de cada esquina antes de pasar a los cordones largos.</p><div class="tip">Use soldadura intermitente (punteo cada 10cm) en tubos delgados para evitar empenamiento.</div></div></div>
+      <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Instalación del panel (chapa o reja)</h4><p>Para chapa: corte la plancha a la medida interna del marco + 5mm de sobra. Fije con sargentos y suelde perimetralmente con puntos cada 8cm. Para reja: instale las barras verticales primero, luego las barras horizontales de amarre.</p></div></div>
+      <div class="step"><div class="step-num">7</div><div class="step-body"><h4>Instalación de herrajes</h4><p>Bisagras: marque la posición a 20cm del extremo superior e inferior, y una tercera en el centro. Las bisagras deben estar perfectamente alineadas — use nivel. Suelde primero en la hoja, luego en el marco, verificando la apertura antes de completar la soldadura.</p></div></div>
+      <div class="step"><div class="step-num">8</div><div class="step-body"><h4>Acabado con amoladora</h4><p>Limpie todos los cordones de soldadura con disco de desbaste. Use disco flap 120 para el acabado intermedio. Para portones de alto padrón, use disco flap 180 para un acabado casi liso. Elimine las rebabas y filos cortantes que puedan lastimar al usuario.</p></div></div>
+      <div class="step"><div class="step-num">9</div><div class="step-body"><h4>Preparación y pintura</h4><p>Limpie toda la superficie con thinner o desengrasante. Aplique una mano de primer anticorrosivo (rojo o gris). Espere el tiempo de secado indicado en el producto (generalmente 2–4 horas). Aplique 2 manos de esmalte sintético con rodillo de espuma o pistola.</p><div class="tip">La pintura electrostática (polvo) es la mejor opción para portones de alta calidad — más resistente y con mejor acabado.</div></div></div>
+      <div class="step"><div class="step-num">10</div><div class="step-body"><h4>Transporte e instalación</h4><p>Proteja el portón con espuma o tela durante el transporte. En la obra: instale primero las bisagras en la pared/pilar, luego cuelgue el portón con ayuda de un asistente. Verifique la nivelación, el movimiento y el cierre antes de entregar al cliente.</p><div class="tip">Entregue siempre con un manual básico de mantenimiento — incluso una hoja simple. Genera percepción de profesionalismo.</div></div></div>
+    </div>
+  </div>
+
+  <div class="section" id="s6">
+    <div class="sec-label"><div class="icon">🔥</div><h2>Soldadura y Acabado</h2></div>
+    <table class="data-table">
+      <thead><tr><th>Material</th><th>Proceso</th><th>Parámetros</th><th>Observación</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tubo 40×40 cal.16</strong></td><td>MIG</td><td>90–110A / 18V / CO₂</td><td>Hilo 0,8mm ER70S-6</td></tr>
+        <tr><td><strong>Tubo 50×50 cal.14</strong></td><td>MIG</td><td>120–140A / 19V / CO₂</td><td>Preheat no requerido</td></tr>
+        <tr><td><strong>Chapa 1,2mm</strong></td><td>MIG pulsado</td><td>70–80A / 17V</td><td>Soldadura intermitente</td></tr>
+        <tr><td><strong>Bisagras (esp. 6mm)</strong></td><td>Electrodo</td><td>100–120A / 6013 Ø3,25mm</td><td>Verificar calentamiento</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      <div class="hl-title">Secreto del Acabado Profesional</div>
+      <p>El cliente no ve los cordones de soldadura — ve el resultado final pintado. Invirtiendo 30 minutos adicionales en limpiar y preparar la superficie antes de pintar, el portón parece fabricado en una fábrica de alta gama. Use disco flap 120 para desbaste y 180 para acabado suave.</p>
+      <ul>
+        <li>Limpie la escoria completamente antes de aplicar el primer</li>
+        <li>Aplique el primer mientras el metal está tibio (mejor adherencia)</li>
+        <li>Evite pintar bajo el sol directo — el esmalte forma burbujas</li>
+        <li>2 manos de esmalte son siempre mejores que 1 mano gruesa</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="s7">
+    <div class="sec-label"><div class="icon">🏠</div><h2>Instalación en la Obra</h2></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Verificación de la apertura</h4><p>Verifique que el piso esté nivelado y que los pilares sean plomados (verticales). Si hay irregularidades, corrija antes de instalar. Un portón mal instalado parecerá chueco aunque esté perfectamente fabricado.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Instalación de la guía inferior (corredizo)</h4><p>La guía de acero se instala en el piso, centrada en la apertura. Use nivel para garantizar que esté perfectamente horizontal. Fije con tarugos de expansión M10 cada 30cm. La guía puede soldarse a un platina empotrada en el piso o atornillarse directamente.</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Regulación y ajuste final</h4><p>Coloque el portón en la guía y regule la altura del rodamiento superior. El portón debe deslizar suavemente sin temblar lateralmente. Lubrique con grasa en la guía inferior. Instale los topes final de carrera.</p><div class="tip">Entregue siempre con cerradura instalada y llave etiquetada. El cliente no olvida el detalle.</div></div></div>
+    </div>
+  </div>
+
+  <div class="section" id="s8">
+    <div class="sec-label"><div class="icon">⚠️</div><h2>Errores Comunes — Cómo Evitarlos</h2></div>
+    <div class="warning"><strong>Error 1 — Marco sin cuadratura:</strong> el error más común y el más difícil de corregir después de soldar. Siempre verifique las diagonales ANTES de soldar completamente. Las 2 diagonales deben ser iguales (tolerancia: ±2mm).</div>
+    <div class="warning"><strong>Error 2 — Chapa mal fijada antes de soldar:</strong> la chapa tiene tendencia a empeñarse con el calor. Fíjela con sargentos en múltiples puntos y suelde en secuencia alternada (no en línea recta) para distribuir el calor uniformemente.</div>
+    <div class="warning"><strong>Error 3 — Bisagras no alineadas:</strong> si las bisagras no están en la misma línea vertical, el portón cuelga torcido. Siempre use nivel y una regla larga para alinear todas las bisagras antes de soldar definitivamente.</div>
+    <div class="warning"><strong>Error 4 — Pintar sin preparar la superficie:</strong> el primer no adhiere bien sobre óxido o grasa. Siempre limpie con thinner antes de pintar. El primer aplicado sobre superficie sucia se desprende en meses.</div>
+    <div class="warning"><strong>Error 5 — No dejar holgura en la instalación:</strong> sin holgura el portón roza en los pilares o en el piso. Siempre deje 10–15mm de holgura inferior y 20mm lateral para libre movimiento.</div>
+  </div>
+
+  <div class="section" id="s9">
+    <div class="sec-label"><div class="icon">💰</div><h2>Precios y Negocio</h2></div>
+    <table class="data-table">
+      <thead><tr><th>Producto</th><th>Costo Aprox. Material</th><th>Precio Venta Sugerido</th><th>Margen</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Portón corredizo 3×1,8m (chapa)</strong></td><td>$120–160 USD</td><td>$450–600 USD</td><td>~65%</td></tr>
+        <tr><td><strong>Portón batiente doble 2,4×1,8m</strong></td><td>$90–120 USD</td><td>$300–450 USD</td><td>~65%</td></tr>
+        <tr><td><strong>Portón reja ornamental 3×1,8m</strong></td><td>$150–200 USD</td><td>$600–900 USD</td><td>~70%</td></tr>
+        <tr><td><strong>Portón peatonal 1×2m</strong></td><td>$40–60 USD</td><td>$150–250 USD</td><td>~70%</td></tr>
+        <tr><td><strong>Conjunto (vehicular + peatonal)</strong></td><td>$180–260 USD</td><td>$650–1.100 USD</td><td>~72%</td></tr>
+      </tbody>
+    </table>
+  </div>`
+},
+
+jetski_p1:{
+  img:'reboque-jet-ski.webp',
+  badge:'PROYECTOS DE REMOLQUES',
+  title:'Proyecto Remolque para Jet Ski 3,00 × 1,80m',
+  sub:'Remolque compacto y liviano para jet ski — diseño especial para lanzamiento fácil y transporte seguro.',
+  pdfFile: PDF_FILE || 'reboque-jetski.pdf',
+  toc:[{id:'s1',label:'Especificaciones'},{id:'s2',label:'Materiales'},{id:'s3',label:'Fabricación'},{id:'s4',label:'Sistema de rodillos'},{id:'s5',label:'Precios'}],
+  html:`
+  <div class="intro-box">El remolque para jet ski es compacto, liviano y requiere <strong>rodillos específicos para proteger el casco</strong> del vehículo acuático. Con 3,00m×1,80m, el proyecto es relativamente simple de fabricar pero tiene alta percepción de valor por el nicho especializado.</div>
+  <div class="section" id="s1"><div class="sec-label"><div class="icon">📐</div><h2>Especificaciones</h2></div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="lbl">Largo total</div><div class="val">3,00m</div></div>
+    <div class="spec-card"><div class="lbl">Ancho de cunas</div><div class="val">1,80m</div></div>
+    <div class="spec-card"><div class="lbl">Peso propio</div><div class="val">80–120kg</div></div>
+    <div class="spec-card"><div class="lbl">Capacidad</div><div class="val">hasta 450kg</div></div>
+    <div class="spec-card"><div class="lbl">Chassis</div><div class="val">Tubo 40×40 cal.16</div></div>
+    <div class="spec-card"><div class="lbl">Eje</div><div class="val">Torsional 500kg</div></div>
+  </div></div>
+  <div class="section" id="s2"><div class="sec-label"><div class="icon">📦</div><h2>Materiales</h2></div>
+  <table class="data-table"><thead><tr><th>Componente</th><th>Especificación</th><th>Qty</th></tr></thead><tbody>
+    <tr><td><strong>Tubo chassis</strong></td><td>40×40mm cal.16</td><td>16m lineales</td></tr>
+    <tr><td><strong>Cunas apoyo</strong></td><td>30×30mm cal.18</td><td>4m lineales</td></tr>
+    <tr><td><strong>Rodillos centrales</strong></td><td>PVC Ø80mm × 150mm</td><td>4 unidades</td></tr>
+    <tr><td><strong>Rodillos laterales</strong></td><td>PVC Ø60mm × 100mm</td><td>4 unidades</td></tr>
+    <tr><td><strong>Eje torsional galvanizado</strong></td><td>500kg</td><td>1 kit</td></tr>
+    <tr><td><strong>Neumáticos</strong></td><td>165/70 R13</td><td>2 unidades</td></tr>
+    <tr><td><strong>Winche manual</strong></td><td>Cable 3m + gancho</td><td>1 unidad</td></tr>
+    <tr><td><strong>Kit eléctrico sumergible</strong></td><td>IP68 + conector 7 pines</td><td>1 kit</td></tr>
+  </tbody></table></div>
+  <div class="section" id="s3"><div class="sec-label"><div class="icon">⚡</div><h2>Fabricación</h2></div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Chassis en V</h4><p>Los largueros del remolque de jet ski tienen forma de V vista desde arriba — convergen desde atrás (1,80m ancho) hasta el frente (enganche). Corte los tubos en inglete para la unión con el enganche central.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Travesaños y cunas</h4><p>Instale 3 travesaños transversales: uno en el centro del eje, uno adelante y uno atrás. Las cunas de apoyo del jet ski salen de estos travesaños hacia arriba en ángulo.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Posición del eje</h4><p>El eje va a 55% del largo desde el frente (1,65m). Fije con U-bolts M10. Verifique que el eje esté a 90° respecto a los largueros.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Anticorrosión</h4><p>Aplique primer epoxi marino en toda la estructura antes del acabado. Use lámparas sumergibles IP68. El remolque se sumergirá regularmente en agua dulce o salada.</p></div></div>
+  </div></div>
+  <div class="section" id="s4"><div class="sec-label"><div class="icon">⚙️</div><h2>Sistema de Rodillos</h2></div>
+  <div class="highlight"><div class="hl-title">Por qué los Rodillos son Fundamentales</div><p>El casco de un jet ski es frágil — fibra de vidrio o plástico reforzado. Sin rodillos, el contacto con el metal del remolque daña el casco. Los rodillos de PVC protegen la embarcación y facilitan el deslizamiento al cargar y descargar en el agua.</p>
+  <ul><li>Rodillos centrales (bajo el casco): soportan el peso principal</li><li>Rodillos laterales (guías): centran el jet ski durante la carga</li><li>Rodillo de proa (frontal): recibe el gancho del winche</li><li>Lubrique los ejes de los rodillos con grasa marina</li></ul></div></div>
+  <div class="section" id="s5"><div class="sec-label"><div class="icon">💰</div><h2>Precios</h2></div>
+  <div class="spec-grid">
+    <div class="spec-card"><div class="lbl">Costo materiales</div><div class="val">$250–380 USD</div></div>
+    <div class="spec-card"><div class="lbl">Precio de venta</div><div class="val">$800–1.300 USD</div></div>
+    <div class="spec-card"><div class="lbl">Margen</div><div class="val">~65%</div></div>
+    <div class="spec-card"><div class="lbl">Tiempo fabricación</div><div class="val">2–3 días</div></div>
+  </div></div>`
+}
+
+}; // end MATERIALS
+
+// ── RENDER ──────────────────────────────────────────────────────
+const mat = MATERIALS[KEY];
+const main = document.getElementById('mainContent');
+
+if(!mat){
+  main.innerHTML = `<div style="padding:60px;text-align:center;color:var(--gray)"><h2 style="color:var(--gold);font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:2px">Material no encontrado</h2><p style="margin-top:12px">Regrese al área de miembros y seleccione un producto.</p></div>`;
+} else {
+  document.title = mat.title + ' — Mestre da Serralheria';
+  document.getElementById('btnPdfDownload').href = mat.pdfFile || PDF_FILE;
+  buildToc(mat.toc || []);
+  main.innerHTML = `
+    <div class="hero">
+      <img src="${mat.img}" alt="${mat.title}">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">${mat.badge}</div>
+        <div class="hero-title">${mat.title}</div>
+        <div class="hero-sub">${mat.sub}</div>
+      </div>
+    </div>
+    <div class="content">${mat.html}</div>
+    <div class="pdf-access-section">
+      <h3>📄 Acceda al Proyecto Técnico Completo</h3>
+      <p>Este material en español es una <strong>guía de referencia completa</strong>. El PDF original (en portugués) contiene los <strong>planos técnicos detallados</strong> con todas las cotas, esquemas de soldadura y cortes necesarios para fabricar el proyecto.</p>
+      <div class="pdf-btns">
+        <a href="${mat.pdfFile || PDF_FILE}" download class="pdf-btn-main">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar PDF con Planos Técnicos
+        </a>
+        <button onclick="window.close()" class="pdf-btn-sec">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Volver al Área de Miembros
+        </button>
+      </div>
+    </div>
+    <div class="viewer-footer">
+      <strong>MESTRE DA SERRALHERIA</strong> — Material educativo exclusivo para alumnos.<br>
+      Todo el contenido está protegido. Prohibida la reproducción sin autorización.
+    </div>
+  `;
+}
+</script>
+</body>
+</html>
